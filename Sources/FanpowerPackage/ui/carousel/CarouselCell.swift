@@ -160,6 +160,15 @@ class CarouselCell: UICollectionViewCell {
         tableView.isScrollEnabled = true
         tableView.separatorStyle = .none
         
+        let gradientTop = CAGradientLayer()
+        gradientTop.frame = moreIndicatorTop.bounds
+        gradientTop.colors = [UIColor.clear.cgColor, UIColor.gray.cgColor]
+        moreIndicatorTop.layer.insertSublayer(gradientTop, at: 0)
+        let gradientBottom = CAGradientLayer()
+        gradientBottom.frame = moreIndicatorTop.bounds
+        gradientBottom.colors = [UIColor.gray.cgColor, UIColor.clear.cgColor]
+        moreIndicatorBottom.layer.insertSublayer(gradientBottom, at: 0)
+        
         innerRegistrationHeaderHolder.backgroundColor = Constants.headerBgColor
         innerRegistrationHeaderHolder.clipsToBounds = true
         innerRegistrationHeaderHolder.layer.cornerRadius = 12

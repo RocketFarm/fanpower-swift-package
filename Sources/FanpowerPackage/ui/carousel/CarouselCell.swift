@@ -201,9 +201,9 @@ extension CarouselCell: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: rowCellId, for: indexPath) as! PropsRowCell
         cell.mainLabel.text = viewModel.picks[indexPath.item].display_title
         
-        if let secondaryColor = self.viewModel.secondaryColor {
-            cell.mainLabel.textColor = secondaryColor
-            cell.subLabel.textColor = secondaryColor
+        if let primaryColor = self.viewModel.primaryColor {
+            cell.mainLabel.textColor = primaryColor
+            cell.subLabel.textColor = primaryColor
         }
         if viewModel.currentScreen == .results {
             cell.subLabel.isHidden = false

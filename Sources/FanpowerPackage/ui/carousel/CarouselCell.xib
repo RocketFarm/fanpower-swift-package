@@ -17,7 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CarouselCell" reuseIdentifier="CarouselCell" id="7rz-Vt-tlj" customClass="CarouselCell">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CarouselCell" reuseIdentifier="CarouselCell" id="7rz-Vt-tlj" customClass="CarouselCell" customModule="FanpowerPackage">
             <rect key="frame" x="0.0" y="0.0" width="366" height="406"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="J1k-37-Ghu">
@@ -210,7 +210,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <size key="customSize" width="366" height="406"/>
             <connections>
-                <outlet property="adImage" destination="uwJ-HL-mmL" id="1bW-ko-TMS"/>
+                <outlet property="adImage" destination="uwJ-HL-mmL" id="Mvf-CX-N3D"/>
                 <outlet property="codeEntryField" destination="y8n-Oq-Svd" id="fIV-Lh-mqH"/>
                 <outlet property="countryCodeLabel" destination="vMM-df-dQz" id="Tlm-If-rUu"/>
                 <outlet property="emailTextField" destination="WsE-yh-LpA" id="Sts-wM-cfk"/>

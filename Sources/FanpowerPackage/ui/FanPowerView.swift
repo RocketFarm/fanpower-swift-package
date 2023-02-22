@@ -13,7 +13,7 @@ protocol FanPowerViewDelegate {
     func ready()
 }
 
-class FanPowerView: UIView {
+public class FanPowerView: UIView {
     
     @IBOutlet private var contentView: UIView!
     
@@ -284,15 +284,15 @@ extension FanPowerView: UICollectionViewDelegate {
         return UIEdgeInsets.zero
     }
     
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         velocityX = velocity.x
     }
     
-    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+    public func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         setContentOffset(scrollView: collectionView)
     }
 
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         guard !decelerate else {
             return
         }
@@ -319,11 +319,11 @@ extension FanPowerView: UICollectionViewDelegate {
 }
 
 extension FanPowerView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.propIds.count//viewModel.propsData.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarouselCell.cellId, for: indexPath) as! CarouselCell
         cell.registrationHolder.isHidden = true
         if let propsData = viewModel.propsData[viewModel.propIds[indexPath.item]] {

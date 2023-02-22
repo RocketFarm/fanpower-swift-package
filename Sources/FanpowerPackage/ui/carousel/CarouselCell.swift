@@ -200,6 +200,11 @@ extension CarouselCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: rowCellId, for: indexPath) as! PropsRowCell
         cell.mainLabel.text = viewModel.picks[indexPath.item].display_title
+        
+        if let secondaryColor = self.viewModel.secondaryColor {
+            cell.mainLabel.textColor = secondaryColor
+            cell.subLabel.textColor = secondaryColor
+        }
         if viewModel.currentScreen == .results {
             cell.subLabel.isHidden = false
             cell.subLabel.text = "\(Int(viewModel.picks[indexPath.row].pick_popularity))%"
@@ -223,7 +228,7 @@ extension CarouselCell: UITableViewDataSource {
             if let secondaryColor = self.viewModel.secondaryColor {
                 cell.progressBarView.backgroundColor = secondaryColor
             } else {
-                cell.labelsHolder.layer.borderColor = Constants.pickedBorderYellow.cgColor
+                cell.progressBarView.backgroundColor = Constants.pickedBorderYellow
             }
         } else {
             cell.progressBarView.isHidden = true

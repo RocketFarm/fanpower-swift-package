@@ -5,7 +5,8 @@ Swift package to display Fanpower widget
 
 # Example Usage
 
-```import UIKit
+```
+import UIKit
 import FanpowerPackage
 
 class ViewController: UIViewController {
@@ -24,4 +25,5 @@ class ViewController: UIViewController {
             self.fanPowerView.isHidden = false
         }
     }
-}```
+}
+```

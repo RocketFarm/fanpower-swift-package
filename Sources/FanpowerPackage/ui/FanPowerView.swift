@@ -254,10 +254,12 @@ public class FanPowerView: UIView {
                 let primaryColor = publisherResponse.primary_color == nil
                     ? UIColor.init(hex: "#291535FF")
                     : UIColor.init(hex: publisherResponse.primary_color!)
+                self.viewModel.primaryColor = primaryColor
                 
                 let secondaryColor = publisherResponse.secondary_color == nil
                     ? UIColor.init(hex: "#44CA97FF")
                     : UIColor.init(hex: publisherResponse.secondary_color!)
+                self.viewModel.secondaryColor = secondaryColor
                 
                 let iconColor = publisherResponse.icon_color == nil
                     ? UIColor.init(hex: "#FA5757FF")
@@ -274,6 +276,8 @@ public class FanPowerView: UIView {
                     ? UIColor.init(hex: "#291535FF")
                     : UIColor.init(hex: publisherResponse.background_color!)
                 self.contentView.backgroundColor = backgroundColor
+                
+                self.collectionView.reloadData()
             }
         }).disposed(by: disposeBag)
     }
@@ -326,6 +330,9 @@ extension FanPowerView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarouselCell.cellId, for: indexPath) as! CarouselCell
         cell.registrationHolder.isHidden = true
+        cell.viewModel.primaryColor = viewModel.primaryColor
+        cell.viewModel.secondaryColor = viewModel.secondaryColor
+        cell.viewModel.textLinkColor = viewModel.textLinkColor
         if let propsData = viewModel.propsData[viewModel.propIds[indexPath.item]] {
             cell.title.text = propsData.proposition
             if let adUrl = viewModel.adUrl {

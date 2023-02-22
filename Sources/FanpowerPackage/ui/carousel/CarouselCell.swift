@@ -169,6 +169,14 @@ class CarouselCell: UICollectionViewCell {
         innerRegistrationBodyHolder.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         innerRegistrationBodyHolder.clipsToBounds = true
         
+        if let secondaryColor = viewModel.secondaryColor,
+            let textLinkColor = viewModel.textLinkColor {
+            
+            self.innerRegistrationHeader.textColor = textLinkColor
+            self.innerRegistrationHeaderHolder.backgroundColor = secondaryColor
+            self.registrationFooter.textColor = secondaryColor
+        }
+        
         adImage.layer.cornerRadius = 8
         
         let blurEffect = UIBlurEffect(style: .extraLight)
@@ -205,7 +213,18 @@ extension CarouselCell: UITableViewDataSource {
                 Float(cell.labelsHolder.frame.width) * (viewModel.picks[indexPath.row].pick_popularity / 100.0)
             )
             cell.progressBarView.isHidden = false
-            cell.labelsHolder.layer.borderColor = Constants.pickedBorderYellow.cgColor
+            
+            if let primaryColor = self.viewModel.primaryColor {
+                cell.labelsHolder.layer.borderColor = primaryColor.cgColor
+            } else {
+                cell.labelsHolder.layer.borderColor = Constants.pickedBorderYellow.cgColor
+            }
+            
+            if let secondaryColor = self.viewModel.secondaryColor {
+                cell.progressBarView.backgroundColor = secondaryColor
+            } else {
+                cell.labelsHolder.layer.borderColor = Constants.pickedBorderYellow.cgColor
+            }
         } else {
             cell.progressBarView.isHidden = true
             cell.labelsHolder.layer.borderColor = Constants.black.cgColor

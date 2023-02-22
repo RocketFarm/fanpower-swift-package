@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 import RxSwift
 
 class CarouselCellViewModel {
@@ -26,6 +27,9 @@ class CarouselCellViewModel {
     var adUrl: String? = nil
     var adUrlUpdated = PublishSubject<Void>()
     var referralUrl: String? = nil
+    var primaryColor: UIColor? = nil
+    var secondaryColor: UIColor? = nil
+    var textLinkColor: UIColor? = nil
     
     enum Screen {
         case props
@@ -37,6 +41,10 @@ class CarouselCellViewModel {
         if let referralUrl = referralUrl {
             if let title = title {
                 return "\(title) \(referralUrl) #makeyourpick"
+            }
+        } else {
+            if let title = title {
+                return "\(title) \(FanpowerApi.shared.publisherShareUrl) #makeyourpick"
             }
         }
         return nil

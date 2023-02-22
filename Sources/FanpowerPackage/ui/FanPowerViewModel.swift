@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import Alamofire
+import UIKit
 
 class FanPowerViewModel {
     var logoUrl = PublishSubject<String>()
@@ -15,6 +16,8 @@ class FanPowerViewModel {
     var propUpdated = PublishSubject<String>()
     var colorsUpdated = PublishSubject<PublisherResponse?>()
     var adUrl: String? = nil
+    var primaryColor: UIColor? = nil
+    var secondaryColor: UIColor? = nil
     
     var propIds = ["25563", "25563"]
     var propsData: [String: PropResponse] = [:]

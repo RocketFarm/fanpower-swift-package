@@ -1,3 +1,3 @@
 # FanpowerPackage
 
-A description of this package.
+Swift package to display Fanpower widget

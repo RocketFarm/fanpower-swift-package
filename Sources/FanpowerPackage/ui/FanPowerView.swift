@@ -63,7 +63,7 @@ public class FanPowerView: UIView {
 //        initSubviews()
 //    }
     
-    func setup(tokenForJwtRequest: String, publisherToken: String, publisherId: String, shareUrl: String, propIds: [String], completionHandler: @escaping () -> Void) {
+    public func setup(tokenForJwtRequest: String, publisherToken: String, publisherId: String, shareUrl: String, propIds: [String], completionHandler: @escaping () -> Void) {
         FanpowerApi.shared.tokenForJwtRequest = tokenForJwtRequest
         FanpowerApi.shared.publisherToken = publisherToken
         FanpowerApi.shared.publisherId = publisherId

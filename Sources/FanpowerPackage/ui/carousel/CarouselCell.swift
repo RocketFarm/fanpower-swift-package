@@ -152,7 +152,7 @@ class CarouselCell: UICollectionViewCell {
     func initSubviews() {
         codeEntryField.isHidden = true
         
-        tableView.register(UINib(nibName: rowCellId, bundle: nil), forCellReuseIdentifier: rowCellId)
+        tableView.register(UINib(nibName: rowCellId, bundle: Bundle.module), forCellReuseIdentifier: rowCellId)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.isScrollEnabled = true

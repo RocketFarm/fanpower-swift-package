@@ -83,7 +83,7 @@ public class FanPowerView: UIView {
         pageControl.numberOfPages = collectionView(collectionView, numberOfItemsInSection: 0)
         pageControl.currentPage = 0
         
-        collectionView.register(UINib(nibName: CarouselCell.cellId, bundle: nil), forCellWithReuseIdentifier: CarouselCell.cellId)
+        collectionView.register(UINib(nibName: CarouselCell.cellId, bundle: Bundle.module), forCellWithReuseIdentifier: CarouselCell.cellId)
         
         let carouselLayout = UICollectionViewFlowLayout()
         carouselLayout.scrollDirection = .horizontal

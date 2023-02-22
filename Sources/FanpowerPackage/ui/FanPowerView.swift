@@ -75,7 +75,7 @@ public class FanPowerView: UIView {
     }
     
     private func initSubviews() {
-        let nib = UINib(nibName: "FanPowerView", bundle: nil)
+        let nib = UINib(nibName: "FanPowerView", bundle: Bundle.module)
         nib.instantiate(withOwner: self, options: nil)
         contentView.frame = bounds
         addSubview(contentView)

@@ -269,6 +269,7 @@ public class FanPowerView: UIView {
                 let textLinkColor = publisherResponse.text_link_color == nil
                     ? UIColor.init(hex: "#F8F7FAFF")
                     : UIColor.init(hex: publisherResponse.text_link_color!)
+                self.viewModel.textLinkColor = textLinkColor
                 self.termsAndConditionsLabel.textColor = textLinkColor
                 self.learnMoreLabel.textColor = textLinkColor
                 

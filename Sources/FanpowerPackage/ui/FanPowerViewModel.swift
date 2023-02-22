@@ -18,6 +18,7 @@ class FanPowerViewModel {
     var adUrl: String? = nil
     var primaryColor: UIColor? = nil
     var secondaryColor: UIColor? = nil
+    var textLinkColor: UIColor? = nil
     
     var propIds = ["25563", "25563"]
     var propsData: [String: PropResponse] = [:]

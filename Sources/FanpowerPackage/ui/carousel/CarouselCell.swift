@@ -27,6 +27,8 @@ class CarouselCell: UICollectionViewCell {
     @IBOutlet weak var registrationSendButton: UIImageView!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var moreIndicatorTop: UIView!
+    @IBOutlet weak var moreIndicatorBottom: UIView!
     @IBOutlet weak var registrationFooter: UILabel!
     
     static let cellId = "CarouselCell"
@@ -242,6 +244,24 @@ extension CarouselCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if viewModel.fanPickId == nil {
             viewModel.tapButton(index: indexPath.item)
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let visibleCells = self.tableView.visibleCells
+        if visibleCells.count > 0 && viewModel.picks.count > 0
+            && (visibleCells[0] as! PropsRowCell).mainLabel.text != viewModel.picks[0].display_title {
+            //first row hidden
+            self.moreIndicatorTop.isHidden = false
+        } else {
+            self.moreIndicatorTop.isHidden = true
+        }
+        if visibleCells.count > 0 && viewModel.picks.count > 0
+            && (visibleCells[visibleCells.count - 1] as! PropsRowCell).mainLabel.text != viewModel.picks[viewModel.picks.count - 1].display_title {
+            //last row hidden
+            self.moreIndicatorBottom.isHidden = false
+        } else {
+            self.moreIndicatorBottom.isHidden = true
         }
     }
 }

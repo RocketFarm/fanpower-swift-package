@@ -43,6 +43,20 @@
                                 <rect key="frame" x="32" y="192.33333333333334" width="302" height="109.66666666666666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebx-Kl-LQb">
+                                <rect key="frame" x="32" y="192.33333333333334" width="302" height="20"/>
+                                <color key="backgroundColor" systemColor="systemBrownColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="JUk-Mf-uZF"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nnI-Xt-YhN">
+                                <rect key="frame" x="32" y="282" width="302" height="20"/>
+                                <color key="backgroundColor" systemColor="systemBrownColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="yw8-Tv-YNe"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajN-gi-UyU">
                                 <rect key="frame" x="24" y="192.33333333333334" width="318" height="109.66666666666666"/>
                                 <subviews>
@@ -191,10 +205,16 @@
                             <constraint firstItem="ajN-gi-UyU" firstAttribute="leading" secondItem="AHz-eS-hNp" secondAttribute="leading" constant="24" id="JzK-YI-P79"/>
                             <constraint firstAttribute="bottom" secondItem="uwJ-HL-mmL" secondAttribute="bottom" constant="16" id="LFH-Yf-lOj"/>
                             <constraint firstItem="YTc-RT-0M4" firstAttribute="leading" secondItem="AHz-eS-hNp" secondAttribute="leading" constant="24" id="SxB-CP-TFB"/>
+                            <constraint firstItem="SgE-0J-YjC" firstAttribute="bottom" secondItem="nnI-Xt-YhN" secondAttribute="bottom" id="TJI-Ag-w2a"/>
                             <constraint firstItem="ajN-gi-UyU" firstAttribute="top" secondItem="YTc-RT-0M4" secondAttribute="bottom" constant="32" id="V8M-SL-ycG"/>
+                            <constraint firstItem="ebx-Kl-LQb" firstAttribute="leading" secondItem="SgE-0J-YjC" secondAttribute="leading" id="bjl-Vp-fGG"/>
+                            <constraint firstItem="ebx-Kl-LQb" firstAttribute="top" secondItem="SgE-0J-YjC" secondAttribute="top" id="cAS-MX-f5t"/>
                             <constraint firstItem="uwJ-HL-mmL" firstAttribute="top" secondItem="ajN-gi-UyU" secondAttribute="bottom" constant="16" id="duM-1g-eoD"/>
                             <constraint firstAttribute="trailing" secondItem="uwJ-HL-mmL" secondAttribute="trailing" constant="24" id="hYr-10-MFM"/>
                             <constraint firstAttribute="trailing" secondItem="YTc-RT-0M4" secondAttribute="trailing" constant="24" id="iZM-UC-A1N"/>
+                            <constraint firstItem="nnI-Xt-YhN" firstAttribute="leading" secondItem="SgE-0J-YjC" secondAttribute="leading" id="kXy-3s-usv"/>
+                            <constraint firstItem="SgE-0J-YjC" firstAttribute="trailing" secondItem="ebx-Kl-LQb" secondAttribute="trailing" id="l9L-8C-QTX"/>
+                            <constraint firstItem="SgE-0J-YjC" firstAttribute="trailing" secondItem="nnI-Xt-YhN" secondAttribute="trailing" id="laH-AN-reN"/>
                             <constraint firstAttribute="trailing" secondItem="ajN-gi-UyU" secondAttribute="trailing" constant="24" id="n4E-11-QeJ"/>
                             <constraint firstItem="SgE-0J-YjC" firstAttribute="top" secondItem="YTc-RT-0M4" secondAttribute="bottom" constant="32" id="vp8-f3-GlN"/>
                         </constraints>
@@ -218,6 +238,8 @@
                 <outlet property="innerRegistrationHeader" destination="Nt0-Hw-rim" id="uyW-aq-62Q"/>
                 <outlet property="innerRegistrationHeaderHolder" destination="NAu-TG-GZg" id="Ite-Q2-nyN"/>
                 <outlet property="innerRegistrationHolder" destination="XDT-wq-aEd" id="5Nc-Ig-1Vi"/>
+                <outlet property="moreIndicatorBottom" destination="nnI-Xt-YhN" id="afg-I4-H4S"/>
+                <outlet property="moreIndicatorTop" destination="ebx-Kl-LQb" id="1b4-YR-Jhk"/>
                 <outlet property="phoneFlagImage" destination="oJF-iu-Fch" id="sMg-x0-pZO"/>
                 <outlet property="phoneTextField" destination="nXS-St-QDc" id="v3a-hm-w8p"/>
                 <outlet property="registrationFooter" destination="FPE-ua-IfL" id="bXS-M4-tCl"/>
@@ -236,6 +258,9 @@
         <image name="flag" width="156" height="156"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

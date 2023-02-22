@@ -191,6 +191,7 @@ class CarouselCell: UICollectionViewCell {
     func setPicks(picks: [Pick]) {
         viewModel.picks = picks
         tableView.reloadData()
+        didScroll()
     }
 }
 
@@ -248,6 +249,10 @@ extension CarouselCell: UITableViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.didScroll()
+    }
+    
+    func didScroll() {
         let visibleCells = self.tableView.visibleCells
         if visibleCells.count > 0 && viewModel.picks.count > 0
             && (visibleCells[0] as! PropsRowCell).mainLabel.text != viewModel.picks[0].display_title {

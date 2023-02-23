@@ -43,15 +43,15 @@
                                 <rect key="frame" x="32" y="192.33333333333334" width="302" height="109.66666666666666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebx-Kl-LQb">
-                                <rect key="frame" x="32" y="192.33333333333334" width="302" height="20"/>
+                            <view hidden="YES" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebx-Kl-LQb">
+                                <rect key="frame" x="32" y="192.33333333333334" width="317" height="20"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="JUk-Mf-uZF"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nnI-Xt-YhN">
-                                <rect key="frame" x="32" y="282" width="302" height="20"/>
+                            <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nnI-Xt-YhN">
+                                <rect key="frame" x="32" y="282" width="317" height="20"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="yw8-Tv-YNe"/>
@@ -213,8 +213,8 @@
                             <constraint firstAttribute="trailing" secondItem="uwJ-HL-mmL" secondAttribute="trailing" constant="24" id="hYr-10-MFM"/>
                             <constraint firstAttribute="trailing" secondItem="YTc-RT-0M4" secondAttribute="trailing" constant="24" id="iZM-UC-A1N"/>
                             <constraint firstItem="nnI-Xt-YhN" firstAttribute="leading" secondItem="SgE-0J-YjC" secondAttribute="leading" id="kXy-3s-usv"/>
-                            <constraint firstItem="SgE-0J-YjC" firstAttribute="trailing" secondItem="ebx-Kl-LQb" secondAttribute="trailing" id="l9L-8C-QTX"/>
-                            <constraint firstItem="SgE-0J-YjC" firstAttribute="trailing" secondItem="nnI-Xt-YhN" secondAttribute="trailing" id="laH-AN-reN"/>
+                            <constraint firstItem="SgE-0J-YjC" firstAttribute="trailing" secondItem="ebx-Kl-LQb" secondAttribute="trailing" constant="-15" id="l9L-8C-QTX"/>
+                            <constraint firstItem="SgE-0J-YjC" firstAttribute="trailing" secondItem="nnI-Xt-YhN" secondAttribute="trailing" constant="-15" id="laH-AN-reN"/>
                             <constraint firstAttribute="trailing" secondItem="ajN-gi-UyU" secondAttribute="trailing" constant="24" id="n4E-11-QeJ"/>
                             <constraint firstItem="SgE-0J-YjC" firstAttribute="top" secondItem="YTc-RT-0M4" secondAttribute="bottom" constant="32" id="vp8-f3-GlN"/>
                         </constraints>

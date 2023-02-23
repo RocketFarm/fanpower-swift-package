@@ -162,12 +162,16 @@ class CarouselCell: UICollectionViewCell {
         
         let gradientTop = CAGradientLayer()
         gradientTop.frame = moreIndicatorTop.bounds
-        gradientTop.colors = [UIColor.gray.cgColor, UIColor.clear.cgColor]
+        gradientTop.colors = [UIColor.lightGray.cgColor, UIColor.clear.cgColor]
         moreIndicatorTop.layer.insertSublayer(gradientTop, at: 0)
+        moreIndicatorTop.layer.cornerRadius = 6
+        moreIndicatorTop.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         let gradientBottom = CAGradientLayer()
         gradientBottom.frame = moreIndicatorBottom.bounds
-        gradientBottom.colors = [UIColor.clear.cgColor, UIColor.gray.cgColor]
+        gradientBottom.colors = [UIColor.clear.cgColor, UIColor.lightGray.cgColor]
         moreIndicatorBottom.layer.insertSublayer(gradientBottom, at: 0)
+        moreIndicatorBottom.layer.cornerRadius = 6
+        moreIndicatorBottom.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         
         innerRegistrationHeaderHolder.backgroundColor = Constants.headerBgColor
         innerRegistrationHeaderHolder.clipsToBounds = true

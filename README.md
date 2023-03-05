@@ -39,6 +39,7 @@ class ViewController: UIViewController {
     }
 }
 ```
+`tokenForJwtRequest`, `publisherToken`, and `publisherId` should be supplied to you by FanPower.  `shareUrl` is a URL that users will share when they use the widget's share feature.  It is also used to create the referral URL.
 ### Clearing user session (logout)
 ```
 import FanpowerPackage

@@ -48,8 +48,7 @@ class FanPowerViewModel {
     }
     
     func getIpLookup(ip: String) {
-        FanpowerApi.shared.getIpLookup(ip: "1.1.2.0") { response in
-//            FanpowerApi.shared.getIpLookup(ip: ip) { response in
+        FanpowerApi.shared.getIpLookup(ip: ip) { response in
             FanpowerApi.shared.ipResponse = response.value
             
             FanpowerApi.shared.getAd(adZoneId: "1") { response in

@@ -31,3 +31,9 @@ class FanpowerDb {
         return preferences.string(forKey: keyUserId)
     }
 }
+
+public class FanPower {
+    public static func logout() {
+        FanpowerDb.shared.logOut()
+    }
+}

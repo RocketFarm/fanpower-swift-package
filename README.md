@@ -48,3 +48,4 @@ import FanpowerPackage
 
 FanPower.logout()
 ```
+Most apps will add this to their existing logout flow.

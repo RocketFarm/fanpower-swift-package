@@ -13,7 +13,7 @@ class FanpowerApi: ApiReference {
     
     var access: String?
     
-    static var base = "https://api.playpickup.com/"
+    static var base = "https://developer.fanpower.io/"
     var tokenForJwtRequest = ""
     var publisherToken = ""
     var publisherShareUrl = "https://www.google.com/"

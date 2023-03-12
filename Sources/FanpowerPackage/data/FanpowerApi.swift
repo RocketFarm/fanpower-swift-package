@@ -56,6 +56,19 @@ class FanpowerApi: ApiReference {
             .responseDecodable(of: [PropResponse].self, completionHandler: completionHandler)
     }
     
+    func getCarousel(completionHandler: @escaping (Alamofire.DataResponse<[PropResponse], Alamofire.AFError>) -> Void) {
+        let params: NilRequest? = nil
+        let requestUrl = "\(FanpowerApi.base)v2/carousels/\(publisherId)?token=\(publisherToken)"
+        print(requestUrl)
+        AF.request(requestUrl,
+            method: .get,
+            parameters: params,
+            encoder: JSONParameterEncoder.default
+        )
+            .responseString(completionHandler: {string in print("getCarousel result \(string)")})
+            .responseDecodable(of: [PropResponse].self, completionHandler: completionHandler)
+    }
+    
     func getPropPosts(propId: String, completionHandler: @escaping (Alamofire.DataResponse<PropPostsResponse, Alamofire.AFError>) -> Void) {
         let params: NilRequest? = nil
         let requestUrl = "\(FanpowerApi.base)v1/posts?prop_id=\(propId)&anchor=true"

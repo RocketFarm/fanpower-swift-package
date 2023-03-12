@@ -35,6 +35,7 @@ class CarouselCell: UICollectionViewCell {
     let rowCellId = "PropsRowCell"
     let viewModel = CarouselCellViewModel()
     let disposeBag = DisposeBag()
+    var timer: Timer? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -69,13 +70,33 @@ class CarouselCell: UICollectionViewCell {
             if let phoneText = phoneTextField.text {
                 phone = "+1 \(phoneText)".replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "-", with: "")
             }
-            viewModel.send(number: phone, email: emailTextField.text)
+            if !emailTextField.isHidden {
+                viewModel.send(number: nil, email: emailTextField.text)
+            } else {
+                viewModel.send(number: phone, email: nil)
+            }
+            restartTimer()
         }
+    }
+    
+    func restartTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 2.0 * 60.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: false)
+    }
+    
+    @objc func fireTimer() {
+        self.registrationTopMessage.isHidden = true
+        self.registrationFooter.text = "Or use your email address"
+        self.innerRegistrationHeader.text = "Verify your pick to see results"
+        self.phoneFlagImage.isHidden = false
+        self.phoneTextField.isHidden = false
+        self.codeEntryField.isHidden = true
+        self.countryCodeLabel.isHidden = false
     }
     
     @objc func reSend(_ sender:UITapGestureRecognizer) {
         if viewModel.waitingForCode {
             viewModel.reSend()
+            restartTimer()
         } else {
             emailTextField.isHidden = !emailTextField.isHidden
             phoneTextField.isHidden = !phoneTextField.isHidden
@@ -96,6 +117,7 @@ class CarouselCell: UICollectionViewCell {
             if screen == .register {
                 self.registrationHolder.isHidden = false
             } else if screen == .results {
+                self.timer?.invalidate()
                 self.registrationHolder.isHidden = true
                 self.tableView.reloadData()
             }

@@ -81,6 +81,9 @@ class FanPowerViewModel {
     }
     
     func getProps(propId: String) {
+        FanpowerApi.shared.getCarousel() { response in
+            print(response)
+        }
         FanpowerApi.shared.getProp(propId: propId) { response in
             if let value = response.value {
                 self.propsData[propId] = value[0]//TODO: replace with multiprop response

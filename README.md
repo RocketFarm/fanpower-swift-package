@@ -11,7 +11,7 @@ Once you have your Swift package set up, adding the FanPower Swift Package as a 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/RocketFarm/fanpower-swift-package.git", .exact(version: "0.0.23"))
+    .package(url: "https://github.com/RocketFarm/fanpower-swift-package.git", .exact(version: "0.0.26"))
 ]
 ```
 # Example Usage

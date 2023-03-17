@@ -16,7 +16,7 @@ class FanpowerDb {
     private init() { }
     
     func isLoggedIn() -> Bool {
-        return preferences.string(forKey: keyUserId) != nil
+        return getUserId() != nil
     }
     
     func logOut() {

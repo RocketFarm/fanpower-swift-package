@@ -17,6 +17,8 @@ class Constants {
     static let pickedBorderYellow = UIColor(#colorLiteral(red: 0.9995651841, green: 0.8042533994, blue: 0, alpha: 1))
     static let splashGradientClear = UIColor(#colorLiteral(red: 0.897775352, green: 0.7267916799, blue: 0.01537941117, alpha: 0))
     static let errorRed = UIColor(#colorLiteral(red: 0.8937767148, green: 0.006564801093, blue: 0.1700305045, alpha: 1))
+    static let notChosenBackground = UIColor(#colorLiteral(red: 0.9647058845, green: 0.9647058845, blue: 0.9647058845, alpha: 1))
+    static let notChosen = UIColor(#colorLiteral(red: 0.6435206532, green: 0.6187660098, blue: 0.6707072854, alpha: 1))
     
     static func getAddress(for network: Network) -> String? {
         var address: String?

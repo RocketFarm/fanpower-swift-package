@@ -134,7 +134,8 @@ class CarouselCellViewModel {
             } else if result.value != nil {
                 FanpowerApi.shared.verifyCodeResponse = result.value
                 
-                FanpowerDb.shared.setUserId(userId: result.value?.id)
+                let userId = result.value?.id
+                FanpowerDb.shared.setUserId(userId: userId)
                 
                 self.associatePick()
                 
@@ -164,6 +165,11 @@ class CarouselCellViewModel {
             print("fanPickId was nil")
             return
         }
+        if FanpowerApi.shared.verifyCodeResponse == nil
+            && FanpowerDb.shared.getUserId() == nil {
+            print("verify code response and user id were nil!")
+            return
+        }
         FanpowerApi.shared.associateFanWithPick(fanPickId: fanPickId, propId: propId, adZoneId: "1") { result in
             FanpowerApi.shared.getAd(adZoneId: "4") { response in
                 self.adUrl = response.value?.first?.ad_image
@@ -187,6 +193,10 @@ class CarouselCellViewModel {
                 self.entrySubmittedSuccessfully.onNext(Void())
             }
         }
+    }
+    
+    func hasPicked() -> Bool {
+        return pickRow != nil
     }
     
     func hasPicked(index: Int) -> Bool {

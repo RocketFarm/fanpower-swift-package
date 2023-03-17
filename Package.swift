@@ -22,7 +22,8 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "FanpowerPackage",
-            dependencies: ["RxSwift", "Alamofire", .product(name: "RxCocoa", package: "RxSwift")]),
+            dependencies: ["RxSwift", "Alamofire", .product(name: "RxCocoa", package: "RxSwift")],
+            resources: [.process("Resources/Fonts")]),
         .testTarget(
             name: "FanpowerPackageTests",
             dependencies: ["FanpowerPackage"]),

@@ -28,7 +28,7 @@ public class FanPowerView: UIView {
     @IBOutlet private weak var shareBackgroundHolder: UIView!
     @IBOutlet private weak var shareImage: UIImageView!
     @IBOutlet private weak var termsAndConditionsHolder: UIView!
-    @IBOutlet private weak var pageControlHolderHeight: NSLayoutConstraint!
+    @IBOutlet private weak var pageControlHolderHeight: NSLayoutConstraint!//30
     @IBOutlet private weak var pageControlHolder: UIView!
     @IBOutlet private weak var splashMessage: UIView!
     @IBOutlet private weak var splashButton: UIView!
@@ -63,15 +63,24 @@ public class FanPowerView: UIView {
 //        initSubviews()
 //    }
     
-    public func setup(tokenForJwtRequest: String, publisherToken: String, publisherId: String, shareUrl: String, propIds: [String], completionHandler: @escaping () -> Void) {
+    public func setup(tokenForJwtRequest: String, publisherToken: String, publisherId: String, shareUrl: String, completionHandler: @escaping () -> Void) {
         FanpowerApi.shared.tokenForJwtRequest = tokenForJwtRequest
         FanpowerApi.shared.publisherToken = publisherToken
         FanpowerApi.shared.publisherId = publisherId
         FanpowerApi.shared.publisherShareUrl = shareUrl
-        viewModel.propIds = propIds
         self.completionHandler = completionHandler
         
         initSubviews()
+    }
+    
+    private func updateScrollMeta() {
+        if viewModel.propIds.count < 2 {
+            collectionView.isScrollEnabled = false
+            pageControlHolderHeight.constant = 0
+        } else {
+            collectionView.isScrollEnabled = true
+            pageControlHolderHeight.constant = 30
+        }
     }
     
     private func initSubviews() {
@@ -82,6 +91,8 @@ public class FanPowerView: UIView {
         
         pageControl.numberOfPages = collectionView(collectionView, numberOfItemsInSection: 0)
         pageControl.currentPage = 0
+        pageControl.isUserInteractionEnabled = false
+        pageControlHolder.layer.cornerRadius = pageControlHolder.frame.height / 2
         
         collectionView.register(UINib(nibName: CarouselCell.cellId, bundle: Bundle.module), forCellWithReuseIdentifier: CarouselCell.cellId)
         
@@ -94,16 +105,15 @@ public class FanPowerView: UIView {
             height: self.frame.height - carouselMarginY
         )
         carouselLayout.sectionInset = .zero
+        carouselLayout.minimumLineSpacing = 0
+        carouselLayout.minimumInteritemSpacing = 0
         collectionView.collectionViewLayout = carouselLayout
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.reloadData()
         collectionView.layer.cornerRadius = 24
         //collectionView.roundCorners(topLeft: 24, topRight: 24, bottomLeft: 12, bottomRight: 12)
-        if viewModel.propIds.count < 2 {
-            collectionView.isScrollEnabled = false
-            pageControlHolderHeight.constant = 0
-        }
+        updateScrollMeta()
         
         shareHolder.layer.cornerRadius = 12
         shareTwitterButton.layer.cornerRadius = 8
@@ -243,6 +253,8 @@ public class FanPowerView: UIView {
         viewModel.propUpdated.subscribe(onNext: {_ in
             self.collectionView.reloadData()
             self.completionHandler()
+            self.pageControl.numberOfPages = self.collectionView(self.collectionView, numberOfItemsInSection: 0)
+            self.updateScrollMeta()
         }).disposed(by: disposeBag)
         
         viewModel.adUrlUpdated.subscribe(onNext: {_ in
@@ -315,7 +327,7 @@ extension FanPowerView: UICollectionViewDelegate {
         if x == 0 {
             pageControl.currentPage = 0
         } else {
-            pageControl.currentPage = Int(scrollView.contentSize.width / (scrollView.contentSize.width - x))
+            pageControl.currentPage = Int(x / stopOver)
         }
         
         scrollView.setContentOffset(CGPointMake(x, scrollView.contentOffset.y), animated: true)
@@ -330,6 +342,11 @@ extension FanPowerView: UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarouselCell.cellId, for: indexPath) as! CarouselCell
+        if let carouselViewModel = viewModel.carouselViewModels[viewModel.propIds[indexPath.item]] {
+            cell.viewModel = carouselViewModel
+            cell.stopStartScrollDelegate = self
+            cell.initialize()
+        }
         cell.registrationHolder.isHidden = true
         cell.viewModel.primaryColor = viewModel.primaryColor
         cell.viewModel.secondaryColor = viewModel.secondaryColor
@@ -344,8 +361,21 @@ extension FanPowerView: UICollectionViewDataSource {
             cell.setPicks(picks: propsData.picks)
             cell.viewModel.propId = viewModel.propIds[indexPath.item]
             cell.viewModel.title = propsData.proposition
-            cell.viewModel.getFanPicks()
+            if cell.viewModel.pickRow == nil {
+                cell.viewModel.getFanPicks()
+            }
         }
         return cell
+    }
+}
+
+extension FanPowerView: StopStartScrollDelegate {
+    func changeScrollState(canScroll: Bool) {
+        collectionView.isScrollEnabled = canScroll
+        if !canScroll {
+            pageControl.isEnabled = false
+        } else {
+            updateScrollMeta()
+        }
     }
 }

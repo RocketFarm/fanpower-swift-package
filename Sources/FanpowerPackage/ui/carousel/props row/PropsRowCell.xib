@@ -37,7 +37,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXd-It-ap0">
-                                <rect key="frame" x="12" y="12" width="465" height="109"/>
+                                <rect key="frame" x="18" y="12" width="453" height="109"/>
                                 <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -51,22 +51,21 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="itJ-8x-LdO" secondAttribute="trailing" constant="12" id="010-ST-eYx"/>
-                            <constraint firstItem="itJ-8x-LdO" firstAttribute="leading" secondItem="Hbi-6W-jxI" secondAttribute="leading" constant="12" id="5vC-py-IvA"/>
+                            <constraint firstAttribute="trailing" secondItem="itJ-8x-LdO" secondAttribute="trailing" constant="18" id="010-ST-eYx"/>
+                            <constraint firstItem="itJ-8x-LdO" firstAttribute="leading" secondItem="Hbi-6W-jxI" secondAttribute="leading" constant="18" id="5vC-py-IvA"/>
                             <constraint firstItem="Rgq-UP-q1Q" firstAttribute="leading" secondItem="Ey1-AL-8MP" secondAttribute="trailing" id="79M-7D-wde"/>
                             <constraint firstItem="Ey1-AL-8MP" firstAttribute="top" secondItem="Hbi-6W-jxI" secondAttribute="top" constant="1" id="IRZ-mL-4K6"/>
                             <constraint firstAttribute="bottom" secondItem="yXd-It-ap0" secondAttribute="bottom" constant="12" id="KN2-cJ-7g2"/>
-                            <constraint firstItem="yXd-It-ap0" firstAttribute="leading" secondItem="Hbi-6W-jxI" secondAttribute="leading" constant="12" id="LGk-dR-wNP"/>
+                            <constraint firstItem="yXd-It-ap0" firstAttribute="leading" secondItem="Hbi-6W-jxI" secondAttribute="leading" constant="18" id="LGk-dR-wNP"/>
                             <constraint firstItem="yXd-It-ap0" firstAttribute="centerX" secondItem="Hbi-6W-jxI" secondAttribute="centerX" id="PQD-mc-szR"/>
                             <constraint firstItem="yXd-It-ap0" firstAttribute="top" secondItem="Hbi-6W-jxI" secondAttribute="top" constant="12" id="RJB-tO-4NY"/>
                             <constraint firstItem="Rgq-UP-q1Q" firstAttribute="top" secondItem="Hbi-6W-jxI" secondAttribute="top" id="dTV-su-q90"/>
                             <constraint firstAttribute="bottom" secondItem="itJ-8x-LdO" secondAttribute="bottom" constant="12" id="e1h-dS-ZBM"/>
-                            <constraint firstItem="yXd-It-ap0" firstAttribute="centerY" secondItem="Hbi-6W-jxI" secondAttribute="centerY" id="gpv-Kv-xhc"/>
                             <constraint firstAttribute="bottom" secondItem="Rgq-UP-q1Q" secondAttribute="bottom" id="j1p-ui-jLt"/>
                             <constraint firstAttribute="bottom" secondItem="Ey1-AL-8MP" secondAttribute="bottom" constant="1" id="jOy-9s-SJv"/>
                             <constraint firstAttribute="trailing" secondItem="Rgq-UP-q1Q" secondAttribute="trailing" id="qsu-6O-c2o"/>
                             <constraint firstItem="itJ-8x-LdO" firstAttribute="top" secondItem="Hbi-6W-jxI" secondAttribute="top" constant="12" id="umW-4L-9TF"/>
-                            <constraint firstAttribute="trailing" secondItem="yXd-It-ap0" secondAttribute="trailing" constant="12" id="vl7-br-lEM"/>
+                            <constraint firstAttribute="trailing" secondItem="yXd-It-ap0" secondAttribute="trailing" constant="18" id="vl7-br-lEM"/>
                             <constraint firstItem="Ey1-AL-8MP" firstAttribute="leading" secondItem="Hbi-6W-jxI" secondAttribute="leading" constant="1" id="xdR-cZ-Itg"/>
                         </constraints>
                     </view>

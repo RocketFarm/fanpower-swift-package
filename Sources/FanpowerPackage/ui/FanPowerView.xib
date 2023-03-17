@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -46,9 +47,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cPs-iR-Ljk">
-                    <rect key="frame" x="0.0" y="25" width="414" height="66"/>
+                    <rect key="frame" x="0.0" y="25" width="414" height="33"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="66" id="gpg-UO-kG3"/>
+                        <constraint firstAttribute="height" constant="33" id="gpg-UO-kG3"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fH1-5L-AwN">
@@ -71,7 +72,7 @@
                     <rect key="frame" x="32" y="654" width="167" height="20"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms &amp; Conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nf7-ha-aEP">
-                            <rect key="frame" x="32.666666666666686" y="2.6666666666666288" width="102" height="15"/>
+                            <rect key="frame" x="32.666666666666664" y="2.3333333333333721" width="101.66666666666669" height="15.333333333333336"/>
                             <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="12"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -88,7 +89,7 @@
                     <rect key="frame" x="215" y="654" width="167" height="20"/>
                     <subviews>
                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn More" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Par-qH-sSk">
-                            <rect key="frame" x="20.666666666666657" y="2.6666666666666288" width="62" height="15"/>
+                            <rect key="frame" x="20.666666666666657" y="2.3333333333333721" width="62" height="15.333333333333336"/>
                             <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="12"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -108,7 +109,7 @@
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ECV-wa-Bal">
-                    <rect key="frame" x="8" y="107" width="398" height="531"/>
+                    <rect key="frame" x="8" y="74" width="398" height="564"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="DTB-lm-kQS">
                         <size key="itemSize" width="128" height="128"/>

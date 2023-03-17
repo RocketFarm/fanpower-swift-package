@@ -8,6 +8,10 @@
 import UIKit
 import RxSwift
 
+protocol StopStartScrollDelegate {
+    func changeScrollState(canScroll: Bool)
+}
+
 class CarouselCell: UICollectionViewCell {
     @IBOutlet weak var title: UILabel!
     
@@ -33,12 +37,16 @@ class CarouselCell: UICollectionViewCell {
     
     static let cellId = "CarouselCell"
     let rowCellId = "PropsRowCell"
-    let viewModel = CarouselCellViewModel()
+    var viewModel = CarouselCellViewModel()//The view that instatntiates this cell will change this
     let disposeBag = DisposeBag()
     var timer: Timer? = nil
+    var stopStartScrollDelegate: StopStartScrollDelegate? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    func initialize() {        
         self.initSubviews()
         self.registerListeners()
         self.registerActions()
@@ -64,6 +72,7 @@ class CarouselCell: UICollectionViewCell {
         if viewModel.waitingForCode {
             if let text = codeEntryField.text {
                 viewModel.sendCode(code: text)
+                self.codeEntryField?.endEditing(true)
             }
         } else {
             var phone: String? = nil
@@ -72,8 +81,10 @@ class CarouselCell: UICollectionViewCell {
             }
             if !emailTextField.isHidden {
                 viewModel.send(number: nil, email: emailTextField.text)
+                self.emailTextField?.endEditing(true)
             } else {
                 viewModel.send(number: phone, email: nil)
+                self.phoneTextField?.endEditing(true)
             }
             restartTimer()
         }
@@ -116,7 +127,9 @@ class CarouselCell: UICollectionViewCell {
         viewModel.showScreen.subscribe(onNext: { screen in
             if screen == .register {
                 self.registrationHolder.isHidden = false
+                self.stopStartScrollDelegate?.changeScrollState(canScroll: false)
             } else if screen == .results {
+                self.stopStartScrollDelegate?.changeScrollState(canScroll: true)
                 self.timer?.invalidate()
                 self.registrationHolder.isHidden = true
                 self.tableView.reloadData()
@@ -130,6 +143,7 @@ class CarouselCell: UICollectionViewCell {
             self.innerRegistrationHeader.text = "ENTER THE CODE YOU RECEIVED ⏳"
             self.phoneFlagImage.isHidden = true
             self.phoneTextField.isHidden = true
+            self.emailTextField.isHidden = true
             self.codeEntryField.isHidden = false
             self.countryCodeLabel.isHidden = true
         }).disposed(by: disposeBag)
@@ -245,34 +259,54 @@ extension CarouselCell: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: rowCellId, for: indexPath) as! PropsRowCell
         cell.mainLabel.text = viewModel.picks[indexPath.item].display_title
         
-        if let primaryColor = self.viewModel.primaryColor {
-            cell.mainLabel.textColor = primaryColor
-            cell.subLabel.textColor = primaryColor
-        }
         if viewModel.currentScreen == .results {
             cell.subLabel.isHidden = false
             cell.subLabel.text = "\(Int(viewModel.picks[indexPath.row].pick_popularity))%"
             cell.mainLabel.textAlignment = .left
         } else {
+            if let primaryColor = self.viewModel.primaryColor {
+                cell.mainLabel.textColor = primaryColor
+                cell.subLabel.textColor = primaryColor
+            }
             cell.subLabel.isHidden = true
             cell.mainLabel.textAlignment = .center
         }
-        if viewModel.hasPicked(index: indexPath.item) {
+        if viewModel.currentScreen == .results {
+            let popularity = viewModel.picks[indexPath.row].pick_popularity
             cell.spacerWidthConstraint.constant = CGFloat(
-                Float(cell.labelsHolder.frame.width) * (viewModel.picks[indexPath.row].pick_popularity / 100.0)
+                Float(cell.labelsHolder.frame.width) * ((100 - popularity) / 100.0)
             )
-            cell.progressBarView.isHidden = false
-            
-            if let primaryColor = self.viewModel.primaryColor {
-                cell.labelsHolder.layer.borderColor = primaryColor.cgColor
-            } else {
-                cell.labelsHolder.layer.borderColor = Constants.pickedBorderYellow.cgColor
+            if (popularity / 100.0) > 0.96 {
+                cell.progressBarView.layer.borderWidth = 1
+                cell.progressBarView.layer.borderColor = Constants.white.cgColor
+                cell.progressBarView.layer.cornerRadius = 23
+                cell.progressBarView.backgroundColor = Constants.progressYellow
+                cell.progressBarView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+                cell.progressBarView.clipsToBounds = true
             }
-            
-            if let secondaryColor = self.viewModel.secondaryColor {
-                cell.progressBarView.backgroundColor = secondaryColor
+            cell.progressBarView.isHidden = false
+            if viewModel.hasPicked(index: indexPath.item) {
+                if let primaryColor = self.viewModel.primaryColor {
+                    cell.mainLabel.textColor = primaryColor
+                    cell.subLabel.textColor = primaryColor
+                }
+                if let primaryColor = self.viewModel.primaryColor {
+                    cell.labelsHolder.layer.borderColor = primaryColor.cgColor
+                } else {
+                    cell.labelsHolder.layer.borderColor = Constants.pickedBorderYellow.cgColor
+                }
+                
+                if let secondaryColor = self.viewModel.secondaryColor {
+                    cell.progressBarView.backgroundColor = secondaryColor
+                } else {
+                    cell.progressBarView.backgroundColor = Constants.pickedBorderYellow
+                }
             } else {
-                cell.progressBarView.backgroundColor = Constants.pickedBorderYellow
+                cell.mainLabel.textColor = Constants.notChosen
+                cell.subLabel.textColor = Constants.notChosen
+                cell.labelsHolder.layer.borderColor = Constants.notChosen.cgColor
+                cell.progressBarView.backgroundColor = Constants.notChosenBackground
+                cell.labelsHolder.layer.borderColor = Constants.black.cgColor
             }
         } else {
             cell.progressBarView.isHidden = true

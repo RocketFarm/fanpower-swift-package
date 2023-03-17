@@ -12,7 +12,7 @@ protocol ApiReference {
     func getJwt(completionHandler: @escaping (AFDataResponse<String>) -> Void)
     func getPublisher(completionHandler: @escaping (DataResponse<PublisherResponse, AFError>) -> Void)
     func getProp(propId: String, completionHandler: @escaping (DataResponse<[PropResponse], AFError>) -> Void)
-    func getCarousel(completionHandler: @escaping (DataResponse<[PropResponse], AFError>) -> Void)
+    func getCarousel(completionHandler: @escaping (DataResponse<Carousel, AFError>) -> Void)
     func getPropPosts(propId: String, completionHandler: @escaping (DataResponse<PropPostsResponse, AFError>) -> Void)
     func getAd(adZoneId: String, completionHandler: @escaping (DataResponse<[AdResponse], AFError>) -> Void)
     func postNumber(number: String?, email: String?, completionHandler: @escaping (AFDataResponse<String>) -> Void)

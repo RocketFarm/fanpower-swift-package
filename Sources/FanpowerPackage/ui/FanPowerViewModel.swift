@@ -22,6 +22,8 @@ class FanPowerViewModel {
     
     var propIds = ["25563", "25563"]
     var propsData: [String: PropResponse] = [:]
+    var carouselViewModels: [String: CarouselCellViewModel] = [:]
+    
     
     func initialize() {
         FanpowerApi.shared.getJwt() { response in
@@ -75,18 +77,27 @@ class FanPowerViewModel {
     }
     
     func updateAllProps() {
-        for prop in propIds {
-            getProps(propId: prop)
+        FanpowerApi.shared.getCarousel() { response in
+            if let value = response.value {
+                self.propIds.removeAll()
+                for prop in value.prop_ids {
+                    self.propIds.append("\(prop.prop_id)")
+                }
+                
+                for prop in self.propIds {
+                    self.getProps(propId: prop)
+                }
+            }
         }
     }
     
     func getProps(propId: String) {
-        FanpowerApi.shared.getCarousel() { response in
-            print(response)
-        }
         FanpowerApi.shared.getProp(propId: propId) { response in
             if let value = response.value {
-                self.propsData[propId] = value[0]//TODO: replace with multiprop response
+                self.propsData[propId] = value[0]
+                if self.carouselViewModels[propId] == nil {
+                    self.carouselViewModels[propId] = CarouselCellViewModel()
+                }
                 self.propUpdated.onNext(propId)
             }
         }

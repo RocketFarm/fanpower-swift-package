@@ -13,7 +13,7 @@ class FanpowerApi: ApiReference {
     
     var access: String?
     
-    static var base = "https://developer.fanpower.io/"
+    static var base = "https://api.playpickup.com/"
     var tokenForJwtRequest = ""
     var publisherToken = ""
     var publisherShareUrl = "https://www.google.com/"
@@ -56,9 +56,9 @@ class FanpowerApi: ApiReference {
             .responseDecodable(of: [PropResponse].self, completionHandler: completionHandler)
     }
     
-    func getCarousel(completionHandler: @escaping (Alamofire.DataResponse<[PropResponse], Alamofire.AFError>) -> Void) {
+    func getCarousel(completionHandler: @escaping (Alamofire.DataResponse<Carousel, Alamofire.AFError>) -> Void) {
         let params: NilRequest? = nil
-        let requestUrl = "\(FanpowerApi.base)v2/carousels/\(publisherId)?token=\(publisherToken)"
+        let requestUrl = "\(FanpowerApi.base)v2/carousels/publisher/\(publisherId)/mobile?token=\(publisherToken)"
         print(requestUrl)
         AF.request(requestUrl,
             method: .get,
@@ -66,7 +66,7 @@ class FanpowerApi: ApiReference {
             encoder: JSONParameterEncoder.default
         )
             .responseString(completionHandler: {string in print("getCarousel result \(string)")})
-            .responseDecodable(of: [PropResponse].self, completionHandler: completionHandler)
+            .responseDecodable(of: Carousel.self, completionHandler: completionHandler)
     }
     
     func getPropPosts(propId: String, completionHandler: @escaping (Alamofire.DataResponse<PropPostsResponse, Alamofire.AFError>) -> Void) {
@@ -184,7 +184,7 @@ class FanpowerApi: ApiReference {
         let params = FanPickAssocationRequest(
             token: publisherToken,
             fan_pick_id: fanPickId,
-            fan_id: verifyCodeResponse!.id!,
+            fan_id: (verifyCodeResponse?.id ?? FanpowerDb.shared.getUserId())!,
             prop_id: propId,
             ad_zone_id: adZoneId
         )

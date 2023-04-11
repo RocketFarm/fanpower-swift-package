@@ -9,4 +9,5 @@ import Foundation
 
 struct CreateFanPickResponse: Decodable, Encodable, Equatable {
     let fanPick: String
+    let picks: [Pick]
 }

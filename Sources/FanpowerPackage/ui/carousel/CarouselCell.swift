@@ -126,12 +126,19 @@ class CarouselCell: UICollectionViewCell {
     func registerListeners() {
         viewModel.showScreen.subscribe(onNext: { screen in
             if screen == .register {
+                self.registrationHolder.alpha = 0
                 self.registrationHolder.isHidden = false
+                UIView.animate(withDuration: 0.5) {
+                    self.registrationHolder.alpha = 1
+                }
                 self.stopStartScrollDelegate?.changeScrollState(canScroll: false)
             } else if screen == .results {
                 self.stopStartScrollDelegate?.changeScrollState(canScroll: true)
                 self.timer?.invalidate()
-                self.registrationHolder.isHidden = true
+                UIView.animate(withDuration: 0.5) {
+                    self.registrationHolder.alpha = 0
+                    self.registrationHolder.isHidden = true
+                }
                 self.tableView.reloadData()
             }
         }).disposed(by: disposeBag)
@@ -273,9 +280,14 @@ extension CarouselCell: UITableViewDataSource {
         }
         if viewModel.currentScreen == .results {
             let popularity = viewModel.picks[indexPath.row].pick_popularity
-            cell.spacerWidthConstraint.constant = CGFloat(
-                Float(cell.labelsHolder.frame.width) * ((100 - popularity) / 100.0)
-            )
+            cell.progressBarWidth.constant = 0
+            UIView.animate(withDuration: 0.5) {
+                cell.progressBarWidth.constant = CGFloat(
+                    Float(cell.labelsHolder.frame.width) * (popularity / 100.0)
+                )
+                cell.progressBarView.isHidden = false
+                cell.layoutIfNeeded()
+            }
             if (popularity / 100.0) > 0.96 {
                 cell.progressBarView.layer.borderWidth = 1
                 cell.progressBarView.layer.borderColor = Constants.white.cgColor
@@ -284,7 +296,6 @@ extension CarouselCell: UITableViewDataSource {
                 cell.progressBarView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]
                 cell.progressBarView.clipsToBounds = true
             }
-            cell.progressBarView.isHidden = false
             if viewModel.hasPicked(index: indexPath.item) {
                 if let primaryColor = self.viewModel.primaryColor {
                     cell.mainLabel.textColor = primaryColor

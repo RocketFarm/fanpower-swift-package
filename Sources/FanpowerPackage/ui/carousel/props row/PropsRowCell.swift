@@ -10,7 +10,7 @@ import UIKit
 class PropsRowCell: UITableViewCell {
     @IBOutlet weak var mainLabel: UILabel!
     
-    @IBOutlet weak var spacerWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var progressBarWidth: NSLayoutConstraint!
     @IBOutlet weak var labelsHolder: UIView!
     @IBOutlet weak var progressBarView: UIView!
     @IBOutlet weak var subLabel: UILabel!

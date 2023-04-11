@@ -62,6 +62,7 @@ class CarouselCellViewModel {
                                 for (index, listPick) in self.picks.enumerated() {
                                     if listPick.id == self.fanPickId {
                                         self.pickRow = index
+                                        print("retrieved some pick: pick id \(listPick.id), prop id \(pick.prop_id)")
                                     }
                                 }
                                 
@@ -99,6 +100,11 @@ class CarouselCellViewModel {
                 fanTimeZone: nil
             ) { response in
                 self.fanPickId = response.value?.fanPick
+                if let allSomePicks = response.value?.picks {
+                    for somePick in allSomePicks {
+                        print("setting some pick 1: pick id \(somePick.id), prop id \(self.propId!)")
+                    }
+                }
                 self.associatePick()
             }
         } else {
@@ -115,6 +121,11 @@ class CarouselCellViewModel {
                 fanTimeZone: nil
             ) { response in
                 self.fanPickId = response.value?.fanPick
+                if let allSomePicks = response.value?.picks {
+                    for somePick in allSomePicks {
+                        print("setting some pick 2: pick id \(somePick.id), prop id \(self.propId!)")
+                    }
+                }
                 self.showScreen.onNext(Screen.register)
                 self.currentScreen = .register
             }

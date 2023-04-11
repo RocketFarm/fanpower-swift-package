@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,7 +15,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FanPowerView" customModule="Fanpower_SDK" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FanPowerView" customModule="FanpowerPackage">
             <connections>
                 <outlet property="closeWebviewButton" destination="Bx7-7F-q7X" id="x4h-eR-NuR"/>
                 <outlet property="collectionView" destination="ECV-wa-Bal" id="vrO-8j-7dg"/>
@@ -47,9 +47,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cPs-iR-Ljk">
-                    <rect key="frame" x="0.0" y="25" width="414" height="33"/>
+                    <rect key="frame" x="0.0" y="32" width="414" height="66"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="33" id="gpg-UO-kG3"/>
+                        <constraint firstAttribute="height" constant="66" id="gpg-UO-kG3"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fH1-5L-AwN">
@@ -109,7 +109,7 @@
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ECV-wa-Bal">
-                    <rect key="frame" x="8" y="74" width="398" height="564"/>
+                    <rect key="frame" x="8" y="106" width="398" height="532"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="DTB-lm-kQS">
                         <size key="itemSize" width="128" height="128"/>
@@ -119,10 +119,10 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dXe-hh-7qz">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                     <subviews>
                         <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="31G-Me-fjs">
-                            <rect key="frame" x="0.0" y="45" width="414" height="691"/>
+                            <rect key="frame" x="0.0" y="45" width="414" height="671"/>
                             <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <wkWebViewConfiguration key="configuration">
                                 <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -144,10 +144,10 @@
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eDJ-ph-w0X">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ma5-gw-Y6Q">
-                            <rect key="frame" x="8" y="166" width="398" height="404"/>
+                            <rect key="frame" x="8" y="156" width="398" height="404"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close" translatesAutoresizingMaskIntoConstraints="NO" id="MIN-uO-b2h">
                                     <rect key="frame" x="350" y="24" width="24" height="24"/>
@@ -321,12 +321,12 @@ With The World!</string>
                 <constraint firstItem="dXe-hh-7qz" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="buB-pu-w4H"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="T3C-D0-QoQ" secondAttribute="trailing" constant="32" id="dee-Ct-lbA"/>
                 <constraint firstItem="cPs-iR-Ljk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fRz-pl-Q6F"/>
-                <constraint firstItem="cPs-iR-Ljk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="25" id="gHF-Tb-ISD"/>
+                <constraint firstItem="cPs-iR-Ljk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="gHF-Tb-ISD"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="o3N-vR-Rno" secondAttribute="trailing" id="hjx-fN-b9i"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cPs-iR-Ljk" secondAttribute="trailing" id="iY0-dM-Ahh"/>
                 <constraint firstItem="eDJ-ph-w0X" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ivs-Jw-arA"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="o3N-vR-Rno" secondAttribute="bottom" id="kH7-Af-udB"/>
-                <constraint firstItem="ECV-wa-Bal" firstAttribute="top" secondItem="cPs-iR-Ljk" secondAttribute="bottom" constant="16" id="mEu-oW-rVn"/>
+                <constraint firstItem="ECV-wa-Bal" firstAttribute="top" secondItem="cPs-iR-Ljk" secondAttribute="bottom" constant="8" id="mEu-oW-rVn"/>
                 <constraint firstItem="fH1-5L-AwN" firstAttribute="top" secondItem="Pnd-6p-Bhc" secondAttribute="bottom" constant="16" id="oVu-H8-AwE"/>
                 <constraint firstItem="eDJ-ph-w0X" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="paA-sh-chf"/>
                 <constraint firstItem="Pnd-6p-Bhc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="rEB-H4-J7h"/>
@@ -338,7 +338,7 @@ With The World!</string>
                     <exclude reference="o3N-vR-Rno"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="96" y="58"/>
+            <point key="canvasLocation" x="229" y="48"/>
         </view>
     </objects>
     <resources>

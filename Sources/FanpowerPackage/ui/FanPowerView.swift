@@ -83,6 +83,21 @@ public class FanPowerView: UIView {
         }
     }
     
+    public func setCollectionViewLayout() {
+        let carouselLayout = UICollectionViewFlowLayout()
+        carouselLayout.scrollDirection = .horizontal
+        print("Width: \(self.frame.width) Height: \(self.frame.height)")
+//        print("Width: \(self.window?.frame.width) Height: \(self.window?.frame.height)")
+        carouselLayout.itemSize = .init(
+            width: self.frame.width - carouselMarginX,
+            height: self.frame.height - carouselMarginY
+        )
+        carouselLayout.sectionInset = .zero
+        carouselLayout.minimumLineSpacing = 0
+        carouselLayout.minimumInteritemSpacing = 0
+        collectionView.collectionViewLayout = carouselLayout
+    }
+    
     private func initSubviews() {
         let nib = UINib(nibName: "FanPowerView", bundle: Bundle.module)
         nib.instantiate(withOwner: self, options: nil)
@@ -96,18 +111,7 @@ public class FanPowerView: UIView {
         
         collectionView.register(UINib(nibName: CarouselCell.cellId, bundle: Bundle.module), forCellWithReuseIdentifier: CarouselCell.cellId)
         
-        let carouselLayout = UICollectionViewFlowLayout()
-        carouselLayout.scrollDirection = .horizontal
-//        print("Width: \(self.frame.width) Height: \(self.frame.height)")
-//        print("Width: \(self.window?.frame.width) Height: \(self.window?.frame.height)")
-        carouselLayout.itemSize = .init(
-            width: self.frame.width - carouselMarginX,
-            height: self.frame.height - carouselMarginY
-        )
-        carouselLayout.sectionInset = .zero
-        carouselLayout.minimumLineSpacing = 0
-        carouselLayout.minimumInteritemSpacing = 0
-        collectionView.collectionViewLayout = carouselLayout
+        setCollectionViewLayout()
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.reloadData()
@@ -211,9 +215,17 @@ public class FanPowerView: UIView {
         introHolder.isHidden = true
     }
     
+    private func animateWebView() {
+        UIView.animate(withDuration: 0.5) {
+            self.webViewHolder.alpha = 1
+        }
+    }
+    
     @objc private func tapTerms(_ sender: UITapGestureRecognizer) {
+        webViewHolder.alpha = 0
         DispatchQueue.main.async {
             self.webView.load(URLRequest(url: URL(string: "https://fanpower.io/terms/")!))
+            self.animateWebView()
         }
         print("tapped terms")
         webViewHolder.isHidden = false
@@ -221,8 +233,10 @@ public class FanPowerView: UIView {
     }
     
     @objc private func tapLearnMore(_ sender: UITapGestureRecognizer) {
+        webViewHolder.alpha = 0
         DispatchQueue.main.async {
             self.webView.load(URLRequest(url: URL(string: "https://fanpower.io")!))
+            self.animateWebView()
         }
         print("tapped learnmore")
         webViewHolder.isHidden = false
@@ -236,6 +250,10 @@ public class FanPowerView: UIView {
     
     @objc private func tapShareImage(_ sender: UITapGestureRecognizer) {
         print("tapped shareimage")
+        self.shareBackgroundHolder.alpha = 0
+        UIView.animate(withDuration: 0.5) {
+            self.shareBackgroundHolder.alpha = 1
+        }
         self.shareBackgroundHolder.isHidden = false
     }
     

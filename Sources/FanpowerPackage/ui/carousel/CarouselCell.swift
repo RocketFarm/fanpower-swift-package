@@ -18,7 +18,11 @@ class CarouselCell: UICollectionViewCell {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var registrationHolder: UIView!
     
-    @IBOutlet weak var codeEntryField: UITextField!
+    @IBOutlet weak var codeEntryField: UITextField!  {
+        didSet {
+            codeEntryField?.addDoneCancelToolbar(onDone: (target: self, action: #selector(doneButtonTappedForNumericTextField)))
+        }
+    }
     @IBOutlet weak var innerRegistrationHeader: UILabel!
     @IBOutlet weak var registrationTopMessage: UILabel!
     @IBOutlet weak var adImage: UIImageView!
@@ -29,7 +33,11 @@ class CarouselCell: UICollectionViewCell {
     @IBOutlet weak var phoneFlagImage: UIImageView!
     @IBOutlet weak var countryCodeLabel: UILabel!
     @IBOutlet weak var registrationSendButton: UIImageView!
-    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField! {
+        didSet {
+            phoneTextField?.addDoneCancelToolbar(onDone: (target: self, action: #selector(doneButtonTappedForNumericTextField)))
+        }
+    }
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var moreIndicatorTop: UIView!
     @IBOutlet weak var moreIndicatorBottom: UIView!
@@ -44,6 +52,12 @@ class CarouselCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    @objc func doneButtonTappedForNumericTextField() {
+        print("Done");
+        codeEntryField.resignFirstResponder()
+        phoneTextField.resignFirstResponder()
     }
     
     func initialize() {        

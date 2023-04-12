@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -29,7 +28,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="366" height="406"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which driver is the most entertaining to watch?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTc-RT-0M4">
-                                <rect key="frame" x="24" y="24" width="318" height="126"/>
+                                <rect key="frame" x="24" y="24" width="318" height="136.33333333333334"/>
                                 <fontDescription key="fontDescription" name="Outfit-ExtraBold" family="Outfit" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,11 +40,11 @@
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SgE-0J-YjC">
-                                <rect key="frame" x="32" y="182" width="302" height="120"/>
+                                <rect key="frame" x="32" y="192.33333333333334" width="302" height="109.66666666666666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <view hidden="YES" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebx-Kl-LQb">
-                                <rect key="frame" x="24" y="182" width="318" height="20"/>
+                                <rect key="frame" x="24" y="192.33333333333334" width="318" height="20"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="JUk-Mf-uZF"/>
@@ -59,19 +58,19 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajN-gi-UyU">
-                                <rect key="frame" x="24" y="182" width="318" height="120"/>
+                                <rect key="frame" x="24" y="192.33333333333334" width="318" height="109.66666666666666"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUy-ns-Aol">
-                                        <rect key="frame" x="0.0" y="-22.333333333333343" width="318" height="164.66666666666666"/>
+                                        <rect key="frame" x="0.0" y="-34" width="318" height="178"/>
                                         <subviews>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the code within 2 minutes to verify your pick" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfl-iR-5VG">
-                                                <rect key="frame" x="0.0" y="0.0" width="318" height="39.666666666666664"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="318" height="43"/>
                                                 <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XDT-wq-aEd">
-                                                <rect key="frame" x="0.0" y="39.666666666666686" width="318" height="104"/>
+                                                <rect key="frame" x="0.0" y="53" width="318" height="104"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NAu-TG-GZg">
                                                         <rect key="frame" x="0.0" y="0.0" width="318" height="52"/>
@@ -93,22 +92,22 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aue-Jh-vSg">
-                                                        <rect key="frame" x="0.0" y="52" width="318" height="52"/>
+                                                        <rect key="frame" x="0.0" y="51.999999999999972" width="318" height="52"/>
                                                         <subviews>
                                                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="-  -  -  -  -  -" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y8n-Oq-Svd">
                                                                 <rect key="frame" x="26" y="0.0" width="240" height="52"/>
                                                                 <fontDescription key="fontDescription" name="Outfit-Bold" family="Outfit" pointSize="26"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                             </textField>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Send icon" translatesAutoresizingMaskIntoConstraints="NO" id="EQw-nF-WeK">
-                                                                <rect key="frame" x="266" y="7.9999999999999716" width="36" height="36"/>
+                                                                <rect key="frame" x="266" y="8" width="36" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="36" id="PzE-Mh-AAL"/>
                                                                     <constraint firstAttribute="width" constant="36" id="h50-8E-AXe"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flag" translatesAutoresizingMaskIntoConstraints="NO" id="oJF-iu-Fch">
-                                                                <rect key="frame" x="12" y="13.999999999999972" width="24" height="24"/>
+                                                                <rect key="frame" x="12" y="14" width="24" height="24"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="24" id="A92-WN-fpu"/>
                                                                     <constraint firstAttribute="height" constant="24" id="N4U-XJ-IvU"/>
@@ -119,13 +118,13 @@
                                                                 <fontDescription key="fontDescription" name="Outfit-Bold" family="Outfit" pointSize="26"/>
                                                                 <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="phonePad" returnKeyType="done" textContentType="tel"/>
                                                             </textField>
-                                                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WsE-yh-LpA">
+                                                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="johnsmith@gmail.com" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WsE-yh-LpA">
                                                                 <rect key="frame" x="8" y="0.0" width="250" height="52"/>
                                                                 <fontDescription key="fontDescription" name="Outfit-Bold" family="Outfit" pointSize="26"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="+1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMM-df-dQz">
-                                                                <rect key="frame" x="44" y="10.99999999999997" width="25" height="30.333333333333329"/>
+                                                                <rect key="frame" x="44" y="9.3333333333333712" width="25" height="33"/>
                                                                 <fontDescription key="fontDescription" name="Outfit-Bold" family="Outfit" pointSize="26"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -167,7 +166,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or use your email address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPE-ua-IfL">
-                                                <rect key="frame" x="77" y="147.66666666666666" width="164" height="17"/>
+                                                <rect key="frame" x="79.000000000000014" y="160.99999999999997" width="160.33333333333337" height="17"/>
                                                 <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="14"/>
                                                 <color key="textColor" red="0.96862745289999996" green="0.81176471709999998" blue="0.27450981740000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -180,7 +179,7 @@
                                             <constraint firstItem="FPE-ua-IfL" firstAttribute="centerX" secondItem="mUy-ns-Aol" secondAttribute="centerX" id="YK0-dP-QUM"/>
                                             <constraint firstItem="FPE-ua-IfL" firstAttribute="top" secondItem="XDT-wq-aEd" secondAttribute="bottom" constant="4" id="evP-nK-cN6"/>
                                             <constraint firstItem="bfl-iR-5VG" firstAttribute="leading" secondItem="mUy-ns-Aol" secondAttribute="leading" id="m77-Bc-nf2"/>
-                                            <constraint firstItem="XDT-wq-aEd" firstAttribute="top" secondItem="bfl-iR-5VG" secondAttribute="bottom" id="mLj-k5-meg"/>
+                                            <constraint firstItem="XDT-wq-aEd" firstAttribute="top" secondItem="bfl-iR-5VG" secondAttribute="bottom" constant="10" id="mLj-k5-meg"/>
                                             <constraint firstItem="bfl-iR-5VG" firstAttribute="top" secondItem="mUy-ns-Aol" secondAttribute="top" id="o0R-Bv-c91"/>
                                             <constraint firstItem="XDT-wq-aEd" firstAttribute="leading" secondItem="mUy-ns-Aol" secondAttribute="leading" id="qUW-DW-QSE"/>
                                             <constraint firstAttribute="trailing" secondItem="XDT-wq-aEd" secondAttribute="trailing" id="utD-rd-5jX"/>

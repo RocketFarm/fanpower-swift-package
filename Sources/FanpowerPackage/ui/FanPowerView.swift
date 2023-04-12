@@ -15,7 +15,7 @@ protocol FanPowerViewDelegate {
 
 public class FanPowerView: UIView {
     
-    @IBOutlet private var contentView: UIView!
+    @IBOutlet public var contentView: UIView!
     
     @IBOutlet private weak var learnMoreLabel: UILabel!
     @IBOutlet private weak var termsAndConditionsLabel: UILabel!

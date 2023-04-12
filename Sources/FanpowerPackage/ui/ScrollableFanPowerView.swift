@@ -22,7 +22,13 @@ public class ScrollableFanPowerView: UIView {
         topMargin.constant = topMarginConstant
         bottomMargin.constant = bottomMarginConstant
         
-        fanPowerView.setup(tokenForJwtRequest: tokenForJwtRequest, publisherToken: publisherToken, publisherId: publisherId, shareUrl: shareUrl, completionHandler: completionHandler)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { //TODO: proper race condition fix
+            self.fanPowerView.setup(tokenForJwtRequest: tokenForJwtRequest,
+                                    publisherToken: publisherToken,
+                                    publisherId: publisherId,
+                                    shareUrl: shareUrl,
+                                    completionHandler: completionHandler)
+        }
     }
     
     public func setContentOffset(offset: CGPoint) {
@@ -43,7 +49,7 @@ public class ScrollableFanPowerView: UIView {
     }
     public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         let view = super.hitTest(point, with: event)
-        return view == contentView ? nil : view
+        return view == contentView || view == fanPowerView.contentView ? nil : view
     }
 }
 

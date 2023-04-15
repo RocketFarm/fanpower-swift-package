@@ -76,17 +76,19 @@ class ViewController: UIViewController {
     func positionOfElement(withId elementID: String) {
         let js = "function f(){ var r = document.getElementById('%@').getBoundingClientRect(); return r.top+''; } f();"
         webView?.evaluateJavaScript(String(format: js, elementID)) { object, error  in
-            let stringY = String(describing: object!)
-            self.fanpowerView.setup(heightConstant: 750, //This value could be calculated the same way topMarginConstant is
-                                    topMarginConstant: CGFloat(truncating: NumberFormatter().number(from: stringY)!) 
-                                                        * self.webView.scrollView.zoomScale,
-                                    bottomMarginConstant: 1500, //This value could be calculated the same way topMarginConstant is
-                                    tokenForJwtRequest: "your-tokenForJwtRequest",
-                                    publisherToken: "your-publisherToken",
-                                    publisherId: "your-publisherId",
-                                    shareUrl: "your-shareUrl",) {
-                self.fanpowerView.isHidden = false
-                self.fanpowerView.setCollectionViewLayout() //This line allows the widget to update its UI layout after it has been moved
+            if let object = object {
+                let stringY = String(describing: object)
+                self.fanpowerView.setup(heightConstant: 750, //This value could be calculated the same way topMarginConstant is
+                                        topMarginConstant: CGFloat(truncating: NumberFormatter().number(from: stringY)!) 
+                                                            * self.webView.scrollView.zoomScale,
+                                        bottomMarginConstant: 1500, //This value could be calculated the same way topMarginConstant is
+                                        tokenForJwtRequest: "your-tokenForJwtRequest",
+                                        publisherToken: "your-publisherToken",
+                                        publisherId: "your-publisherId",
+                                        shareUrl: "your-shareUrl",) {
+                    self.fanpowerView.isHidden = false
+                    self.fanpowerView.setCollectionViewLayout() //This line allows the widget to update its UI layout after it has been moved
+                }
             }
         }
     }

@@ -49,3 +49,58 @@ import FanpowerPackage
 FanPower.logout()
 ```
 Most apps will add this to their existing logout flow.
+
+---
+
+# Using the `ScrollableFanPowerView`
+### Prerequisites
+Have a web view with a `ScrollableFwnPowerView` placed on top of it.  The `ScrollableFwnPowerView` should be constrained to the edges of the web view.
+### Example View Controller implementing a `ScrollableFanPowerView`
+```swift
+import UIKit
+import FanpowerPackage
+import WebKit
+
+class ViewController: UIViewController {
+    @IBOutlet weak var fanpowerView: ScrollableFanPowerView!
+    @IBOutlet weak var webView: WKWebView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        webView.scrollView.delegate = self
+        webView.navigationDelegate = self
+        webView.loadHTMLString("<div id=\"pu-prop-embed\" class=\\\"pu-prop-embed\\\" data-pickup-prop-id=\\\"25452\\\"><section><a href=\\\"https://playpickup.com/news/Array / surez-vs-chastain-who-wins-in-nashville - 25452\\\" rel=\\\"follow\\\" title=\\\"Suárez vs. Chastain: Who wins in Nashville? - Powered By PickUp\\\">Suárez vs. Chastain: Who wins in Nashville? - Powered By PickUp</a></section></div>", baseURL: nil)
+    }
+    
+    func positionOfElement(withId elementID: String?) {
+        let js = "function f(){ var r = document.getElementById('%@').getBoundingClientRect(); return r.top+''; } f();"
+        webView?.evaluateJavaScript(String(format: js, elementID!)) { object, error  in
+            let stringY = String(describing: object!)
+            self.fanpowerView.setup(heightConstant: 750,
+                                    topMarginConstant: CGFloat(truncating: NumberFormatter().number(from: stringY)!) 
+                                                        * self.webView.scrollView.zoomScale,
+                                    bottomMarginConstant: 1500,
+                                    tokenForJwtRequest: "your-tokenForJwtRequest",
+                                    publisherToken: "your-publisherToken",
+                                    publisherId: "your-publisherId",
+                                    shareUrl: "your-shareUrl",) {
+                self.fanpowerView.isHidden = false
+                self.fanpowerView.setCollectionViewLayout()
+            }
+        }
+    }
+}
+
+extension ViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        fanpowerView.setContentOffset(offset: webView.scrollView.contentOffset)
+    }
+}
+
+extension ViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        positionOfElement(withId: "pu-prop-embed")
+    }
+}
+```

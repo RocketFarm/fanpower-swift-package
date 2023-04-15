@@ -257,8 +257,9 @@ class CarouselCell: UICollectionViewCell {
         
         adImage.layer.cornerRadius = 8
         
-        let blurEffect = UIBlurEffect(style: .extraLight)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        //let blurEffect = UIBlurEffect(style: .extraLight)
+        let blurEffectView = BlurEffectView()//UIVisualEffectView(effect: blurEffect)
+        //blurEffectView.translatesAutoresizingMaskIntoConstraints = false
         blurEffectView.frame = registrationHolder.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         registrationHolder.insertSubview(blurEffectView, at: 0)

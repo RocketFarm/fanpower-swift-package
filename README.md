@@ -77,10 +77,10 @@ class ViewController: UIViewController {
         let js = "function f(){ var r = document.getElementById('%@').getBoundingClientRect(); return r.top+''; } f();"
         webView?.evaluateJavaScript(String(format: js, elementID!)) { object, error  in
             let stringY = String(describing: object!)
-            self.fanpowerView.setup(heightConstant: 750,
+            self.fanpowerView.setup(heightConstant: 750, //This value could be calculated the same way topMarginConstant is
                                     topMarginConstant: CGFloat(truncating: NumberFormatter().number(from: stringY)!) 
                                                         * self.webView.scrollView.zoomScale,
-                                    bottomMarginConstant: 1500,
+                                    bottomMarginConstant: 1500, //This value could be calculated the same way topMarginConstant is
                                     tokenForJwtRequest: "your-tokenForJwtRequest",
                                     publisherToken: "your-publisherToken",
                                     publisherId: "your-publisherId",

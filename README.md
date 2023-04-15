@@ -73,9 +73,9 @@ class ViewController: UIViewController {
         webView.loadHTMLString("<div id=\"pu-prop-embed\" class=\\\"pu-prop-embed\\\" data-pickup-prop-id=\\\"25452\\\"><section><a href=\\\"https://playpickup.com/news/Array / surez-vs-chastain-who-wins-in-nashville - 25452\\\" rel=\\\"follow\\\" title=\\\"Suárez vs. Chastain: Who wins in Nashville? - Powered By PickUp\\\">Suárez vs. Chastain: Who wins in Nashville? - Powered By PickUp</a></section></div>", baseURL: nil)
     }
     
-    func positionOfElement(withId elementID: String?) {
+    func positionOfElement(withId elementID: String) {
         let js = "function f(){ var r = document.getElementById('%@').getBoundingClientRect(); return r.top+''; } f();"
-        webView?.evaluateJavaScript(String(format: js, elementID!)) { object, error  in
+        webView?.evaluateJavaScript(String(format: js, elementID)) { object, error  in
             let stringY = String(describing: object!)
             self.fanpowerView.setup(heightConstant: 750, //This value could be calculated the same way topMarginConstant is
                                     topMarginConstant: CGFloat(truncating: NumberFormatter().number(from: stringY)!) 

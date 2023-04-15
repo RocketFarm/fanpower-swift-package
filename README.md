@@ -86,7 +86,7 @@ class ViewController: UIViewController {
                                     publisherId: "your-publisherId",
                                     shareUrl: "your-shareUrl",) {
                 self.fanpowerView.isHidden = false
-                self.fanpowerView.setCollectionViewLayout()
+                self.fanpowerView.setCollectionViewLayout() //This line allows the widget to update its UI layout after it has been moved
             }
         }
     }

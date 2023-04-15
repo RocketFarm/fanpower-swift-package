@@ -54,7 +54,7 @@ Most apps will add this to their existing logout flow.
 
 # Using the `ScrollableFanPowerView`
 ### Prerequisites
-Have a web view with a `ScrollableFwnPowerView` placed on top of it.  The `ScrollableFwnPowerView` should be constrained to the edges of the web view.
+Have a web view with a `ScrollableFanPowerView` placed on top of it.  The `ScrollableFanPowerView` should be constrained to the edges of the web view.
 ### Example View Controller implementing a `ScrollableFanPowerView`
 ```swift
 import UIKit

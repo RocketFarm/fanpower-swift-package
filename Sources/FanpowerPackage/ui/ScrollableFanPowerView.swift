@@ -29,12 +29,18 @@ public class ScrollableFanPowerView: UIView {
                                     shareUrl: shareUrl,
                                     completionHandler: completionHandler)
         }
+        
+        if let windowFrame = window?.frame {
+            contentView.frame = windowFrame
+        }
     }
     
     public func setContentOffset(offset: CGPoint) {
-        var fanPowerOffset = contentView.contentOffset
-        fanPowerOffset.y = offset.y
-        contentView.setContentOffset(fanPowerOffset, animated: false)
+        if let contentView = contentView {
+            var fanPowerOffset = contentView.contentOffset
+            fanPowerOffset.y = offset.y
+            contentView.setContentOffset(fanPowerOffset, animated: false)
+        }
     }
     
     public func setCollectionViewLayout() {

@@ -87,7 +87,8 @@ class ViewController: UIViewController {
                                         tokenForJwtRequest: "your-tokenForJwtRequest",
                                         publisherToken: "your-publisherToken",
                                         publisherId: "your-publisherId",
-                                        shareUrl: "your-shareUrl",) {
+                                        shareUrl: "your-shareUrl",
+                                        referenceFrame: self.webView.frame) { //Passing nil for this param will make the scrollview full-screen
                     self.fanpowerView.isHidden = false
                     self.fanpowerView.setCollectionViewLayout() //This line allows the widget to update its UI layout after it has been moved
                 }

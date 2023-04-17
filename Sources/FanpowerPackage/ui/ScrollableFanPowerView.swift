@@ -15,7 +15,7 @@ public class ScrollableFanPowerView: UIView {
     @IBOutlet var contentView: FPScrollView!
     @IBOutlet weak var fanPowerView: FanPowerView!
     
-    public func setup(heightConstant: CGFloat, topMarginConstant: CGFloat, bottomMarginConstant: CGFloat, tokenForJwtRequest: String, publisherToken: String, publisherId: String, shareUrl: String, completionHandler: @escaping () -> Void) {
+    public func setup(heightConstant: CGFloat, topMarginConstant: CGFloat, bottomMarginConstant: CGFloat, tokenForJwtRequest: String, publisherToken: String, publisherId: String, shareUrl: String, referenceFrame: CGRect?, completionHandler: @escaping () -> Void) {
         initSubviews()
         
         viewHeight.constant = heightConstant
@@ -30,7 +30,9 @@ public class ScrollableFanPowerView: UIView {
                                     completionHandler: completionHandler)
         }
         
-        if let windowFrame = window?.frame {
+        if let referenceFrame = referenceFrame {
+            contentView.frame = referenceFrame
+        } else if let windowFrame = window?.frame {
             contentView.frame = windowFrame
         }
     }

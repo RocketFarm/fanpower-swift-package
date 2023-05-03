@@ -73,6 +73,17 @@ public class FanPowerView: UIView {
         initSubviews()
     }
     
+    public func setup(tokenForJwtRequest: String, publisherToken: String, publisherId: String, shareUrl: String, propIds: [String], completionHandler: @escaping () -> Void) {
+        FanpowerApi.shared.tokenForJwtRequest = tokenForJwtRequest
+        FanpowerApi.shared.publisherToken = publisherToken
+        FanpowerApi.shared.publisherId = publisherId
+        FanpowerApi.shared.publisherShareUrl = shareUrl
+        self.completionHandler = completionHandler
+        self.viewModel.propIds = propIds
+        
+        initSubviews()
+    }
+    
     private func updateScrollMeta() {
         if viewModel.propIds.count < 2 {
             collectionView.isScrollEnabled = false

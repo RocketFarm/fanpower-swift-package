@@ -37,6 +37,29 @@ public class ScrollableFanPowerView: UIView {
         }
     }
     
+    public func setup(heightConstant: CGFloat, topMarginConstant: CGFloat, bottomMarginConstant: CGFloat, tokenForJwtRequest: String, publisherToken: String, publisherId: String, shareUrl: String, referenceFrame: CGRect?, propIds: [String], completionHandler: @escaping () -> Void) {
+        initSubviews()
+        
+        viewHeight.constant = heightConstant
+        topMargin.constant = topMarginConstant
+        bottomMargin.constant = bottomMarginConstant
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { //TODO: proper race condition fix
+            self.fanPowerView.setup(tokenForJwtRequest: tokenForJwtRequest,
+                                    publisherToken: publisherToken,
+                                    publisherId: publisherId,
+                                    shareUrl: shareUrl,
+                                    propIds: propIds,
+                                    completionHandler: completionHandler)
+        }
+        
+        if let referenceFrame = referenceFrame {
+            contentView.frame = referenceFrame
+        } else if let windowFrame = window?.frame {
+            contentView.frame = windowFrame
+        }
+    }
+    
     public func setContentOffset(offset: CGPoint) {
         if let contentView = contentView {
             var fanPowerOffset = contentView.contentOffset

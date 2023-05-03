@@ -20,7 +20,7 @@ class FanPowerViewModel {
     var secondaryColor: UIColor? = nil
     var textLinkColor: UIColor? = nil
     
-    var propIds = ["25563", "25563"]
+    var propIds: [String] = []
     var propsData: [String: PropResponse] = [:]
     var carouselViewModels: [String: CarouselCellViewModel] = [:]
     
@@ -59,7 +59,13 @@ class FanPowerViewModel {
             }
             
             self.getPublisher()
-            self.updateAllProps()
+            if self.propIds.isEmpty {
+                self.updateAllProps()
+            } else {
+                for prop in self.propIds {
+                    self.getProps(propId: prop)
+                }
+            }
             self.getFanProfile()
         }
     }

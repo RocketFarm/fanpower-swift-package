@@ -282,7 +282,9 @@ public class FanPowerView: UIView {
         viewModel.propUpdated.subscribe(onNext: {_ in
             self.collectionView.reloadData()
             self.completionHandler()
-            self.pageControl.numberOfPages = self.collectionView(self.collectionView, numberOfItemsInSection: 0)
+            let numberOfPages = self.collectionView(self.collectionView, numberOfItemsInSection: 0)
+            self.pageControl.numberOfPages = numberOfPages
+            self.pageControl.isHidden = numberOfPages <= 1
             self.updateScrollMeta()
         }).disposed(by: disposeBag)
         

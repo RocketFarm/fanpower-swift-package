@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "FanPower"
-  spec.version      = "0.0.27"
+  spec.version      = "0.0.29"
   spec.summary      = "A prop picker widget for FanPower customers."
 
   # This description is used to generate tags and improve search results.
@@ -39,8 +39,8 @@ Pod::Spec.new do |spec|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  spec.license      = "MIT (example)"
-  # spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  spec.license      = "MIT"
+  # spec.license      = { :type => "MIT", :file => "LICENSE" }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -53,7 +53,7 @@ Pod::Spec.new do |spec|
   #  profile URL.
   #
 
-  spec.author             = { "FanPower" }
+  spec.author             = { "FanPower" => "FanPower@FanPower.com" }
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -65,7 +65,8 @@ Pod::Spec.new do |spec|
   # spec.platform     = :ios, "5.0"
 
   #  When using multiple platforms
-  # spec.ios.deployment_target = "5.0"
+  spec.ios.deployment_target = "14.0"
+  spec.swift_version = "4.2"
   # spec.osx.deployment_target = "10.7"
   # spec.watchos.deployment_target = "2.0"
   # spec.tvos.deployment_target = "9.0"
@@ -77,7 +78,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/RocketFarm/fanpower-swift-package", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/RocketFarm/fanpower-swift-package.git", :tag => "v0.0.29", :branch => "main" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -88,8 +89,9 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "Classes", "Classes/**/*.{h,m}"
-  spec.exclude_files = "Classes/Exclude"
+  spec.source_files  = "Sources/FanpowerPackage/**/*.{h,m,swift}"
+#"Classes", "Classes/**/*.{h,m}"
+ # spec.exclude_files = "Classes/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"
 
@@ -131,5 +133,8 @@ Pod::Spec.new do |spec|
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"
+  spec.dependency "Alamofire", "~> 5.6.1"
+  spec.dependency "RxSwift", "~> 6.5.0"
+  spec.dependency "RxCocoa", "~> 6.5.0"
 
 end

@@ -16,6 +16,7 @@ class FanPowerViewModel {
     var propUpdated = PublishSubject<String>()
     var colorsUpdated = PublishSubject<PublisherResponse?>()
     var adUrl: String? = nil
+    var adLink: String? = nil
     var primaryColor: UIColor? = nil
     var secondaryColor: UIColor? = nil
     var textLinkColor: UIColor? = nil
@@ -55,6 +56,7 @@ class FanPowerViewModel {
             
             FanpowerApi.shared.getAd(adZoneId: "1") { response in
                 self.adUrl = response.value?.first?.ad_image
+                self.adLink = response.value?.first?.ad_url
                 self.adUrlUpdated.onNext(Void())
             }
             

@@ -382,6 +382,7 @@ extension FanPowerView: UICollectionViewDataSource {
         cell.viewModel.primaryColor = viewModel.primaryColor
         cell.viewModel.secondaryColor = viewModel.secondaryColor
         cell.viewModel.textLinkColor = viewModel.textLinkColor
+        cell.viewModel.adLink = viewModel.adLink
         if let propsData = viewModel.propsData[viewModel.propIds[indexPath.item]] {
             cell.title.text = propsData.proposition
             if let adUrl = viewModel.adUrl {

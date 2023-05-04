@@ -78,6 +78,10 @@ class CarouselCell: UICollectionViewCell {
         codeEntryField.addTarget(self, action: #selector(codeEntryDidChange), for: .editingChanged)
         phoneTextField.addTarget(self, action: #selector(phoneEntryDidChange), for: .editingChanged)
         emailTextField.addTarget(self, action: #selector(emailEntryDidChange), for: .editingChanged)
+        self.adImage.isUserInteractionEnabled = true
+        self.adImage.addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action:  #selector (self.tapAd (_:)))
+        )
     }
     
     @objc func send(_ sender:UITapGestureRecognizer) {
@@ -116,6 +120,14 @@ class CarouselCell: UICollectionViewCell {
         self.phoneTextField.isHidden = false
         self.codeEntryField.isHidden = true
         self.countryCodeLabel.isHidden = false
+    }
+    
+    @objc func tapAd(_ sender:UITapGestureRecognizer) {
+        if let adLink = viewModel.adLink {
+            if let link = URL(string: adLink) {
+                UIApplication.shared.open(link)
+            }
+        }
     }
     
     @objc func reSend(_ sender:UITapGestureRecognizer) {

@@ -9,4 +9,5 @@ import Foundation
 
 struct AdResponse: Decodable, Encodable, Equatable {
     let ad_image: String
+    let ad_url: String
 }

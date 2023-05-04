@@ -25,6 +25,7 @@ class CarouselCellViewModel {
     var fanPickId: String? = nil
     var pickRow: Int? = nil
     var adUrl: String? = nil
+    var adLink: String? = nil
     var adUrlUpdated = PublishSubject<Void>()
     var referralUrl: String? = nil
     var primaryColor: UIColor? = nil
@@ -83,6 +84,7 @@ class CarouselCellViewModel {
         
         FanpowerApi.shared.getAd(adZoneId: "2") { response in
             self.adUrl = response.value?.first?.ad_image
+            self.adLink = response.value?.first?.ad_url
             self.adUrlUpdated.onNext(Void())
         }
         
@@ -184,6 +186,7 @@ class CarouselCellViewModel {
         FanpowerApi.shared.associateFanWithPick(fanPickId: fanPickId, propId: propId, adZoneId: "1") { result in
             FanpowerApi.shared.getAd(adZoneId: "4") { response in
                 self.adUrl = response.value?.first?.ad_image
+                self.adLink = response.value?.first?.ad_url
                 self.adUrlUpdated.onNext(Void())
             }
             
@@ -193,15 +196,22 @@ class CarouselCellViewModel {
     }
     
     func send(number: String?, email: String?) {
+        submittedNumber = number
+        submittedEmail = email
         FanpowerApi.shared.postNumber(number: number, email: email) { result in
             if result.value?.contains("Invalid") == true {
                 print("invalid phone or email error")
                 self.invalidPhoneOrEmailEntry.onNext(Void())
                 self.waitingForCode = false
             } else if result.value?.contains("pending") == true {
-                print("Message sent scucessfully")
-                self.waitingForCode = true
-                self.entrySubmittedSuccessfully.onNext(Void())
+//                if email != nil {
+//                    //skip code
+//                    self.sendCode(code: "email")
+//                } else {
+                    print("Message sent scucessfully")
+                    self.waitingForCode = true
+                    self.entrySubmittedSuccessfully.onNext(Void())
+//                }
             }
         }
     }

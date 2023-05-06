@@ -72,7 +72,7 @@
                     <rect key="frame" x="32" y="654" width="167" height="20"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms &amp; Conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nf7-ha-aEP">
-                            <rect key="frame" x="32.666666666666664" y="2.3333333333333721" width="101.66666666666669" height="15.333333333333336"/>
+                            <rect key="frame" x="31.333333333333336" y="3" width="104.66666666666666" height="14"/>
                             <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="12"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -89,7 +89,7 @@
                     <rect key="frame" x="215" y="654" width="167" height="20"/>
                     <subviews>
                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn More" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Par-qH-sSk">
-                            <rect key="frame" x="20.666666666666657" y="2.3333333333333721" width="62" height="15.333333333333336"/>
+                            <rect key="frame" x="20.666666666666657" y="3" width="62" height="14"/>
                             <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="12"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -109,8 +109,8 @@
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ECV-wa-Bal">
-                    <rect key="frame" x="8" y="106" width="398" height="532"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <rect key="frame" x="0.0" y="106" width="414" height="532"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="DTB-lm-kQS">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -147,7 +147,7 @@
                     <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ma5-gw-Y6Q">
-                            <rect key="frame" x="8" y="156" width="398" height="404"/>
+                            <rect key="frame" x="8" y="160" width="398" height="396"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close" translatesAutoresizingMaskIntoConstraints="NO" id="MIN-uO-b2h">
                                     <rect key="frame" x="350" y="24" width="24" height="24"/>
@@ -157,7 +157,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAa-Y2-ScH">
-                                    <rect key="frame" x="25" y="62" width="348" height="106"/>
+                                    <rect key="frame" x="25" y="62" width="348" height="98"/>
                                     <string key="text">Share Your Pick
 With The World!</string>
                                     <fontDescription key="fontDescription" name="Outfit-Bold" family="Outfit" pointSize="42"/>
@@ -165,7 +165,7 @@ With The World!</string>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BXI-Rh-m6p">
-                                    <rect key="frame" x="24" y="194" width="350" height="52"/>
+                                    <rect key="frame" x="24" y="186" width="350" height="52"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitter" translatesAutoresizingMaskIntoConstraints="NO" id="xwp-77-LSM">
                                             <rect key="frame" x="163" y="14" width="24" height="24"/>
@@ -184,7 +184,7 @@ With The World!</string>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DBs-1k-XVR">
-                                    <rect key="frame" x="24" y="261" width="350" height="52"/>
+                                    <rect key="frame" x="24" y="253" width="350" height="52"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fb" translatesAutoresizingMaskIntoConstraints="NO" id="DPh-ah-VBr">
                                             <rect key="frame" x="163" y="14" width="24" height="24"/>
@@ -203,7 +203,7 @@ With The World!</string>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0wf-cw-Hbu">
-                                    <rect key="frame" x="24" y="328" width="350" height="52"/>
+                                    <rect key="frame" x="24" y="320" width="350" height="52"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sms" translatesAutoresizingMaskIntoConstraints="NO" id="jek-VO-e9l">
                                             <rect key="frame" x="163" y="14" width="24" height="24"/>
@@ -307,7 +307,7 @@ With The World!</string>
                 <constraint firstItem="T3C-D0-QoQ" firstAttribute="leading" secondItem="Pnd-6p-Bhc" secondAttribute="trailing" constant="16" id="0Xo-YV-uZf"/>
                 <constraint firstItem="o3N-vR-Rno" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="3RX-BU-fQw"/>
                 <constraint firstAttribute="trailing" secondItem="eDJ-ph-w0X" secondAttribute="trailing" id="3hf-ZG-Anv"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ECV-wa-Bal" secondAttribute="trailing" constant="8" id="GWm-oz-otP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ECV-wa-Bal" secondAttribute="trailing" id="GWm-oz-otP"/>
                 <constraint firstItem="dXe-hh-7qz" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="HYE-mZ-K7D"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="fH1-5L-AwN" secondAttribute="bottom" constant="16" id="JKf-AP-8Mj"/>
                 <constraint firstItem="o3N-vR-Rno" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Np4-uV-Vlo"/>
@@ -315,7 +315,7 @@ With The World!</string>
                 <constraint firstItem="eDJ-ph-w0X" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="T4S-UE-0QD"/>
                 <constraint firstItem="Pnd-6p-Bhc" firstAttribute="top" secondItem="ECV-wa-Bal" secondAttribute="bottom" constant="16" id="T7y-mn-z2r"/>
                 <constraint firstItem="fH1-5L-AwN" firstAttribute="top" secondItem="T3C-D0-QoQ" secondAttribute="bottom" constant="16" id="TA2-My-9Xh"/>
-                <constraint firstItem="ECV-wa-Bal" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="TBU-35-ZjD"/>
+                <constraint firstItem="ECV-wa-Bal" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="TBU-35-ZjD"/>
                 <constraint firstItem="dXe-hh-7qz" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Uxa-kv-3Bq"/>
                 <constraint firstItem="T3C-D0-QoQ" firstAttribute="width" secondItem="Pnd-6p-Bhc" secondAttribute="width" id="Xwd-yU-EeE"/>
                 <constraint firstItem="dXe-hh-7qz" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="buB-pu-w4H"/>

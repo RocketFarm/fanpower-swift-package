@@ -100,8 +100,8 @@ public class FanPowerView: UIView {
         print("Width: \(self.frame.width) Height: \(self.frame.height)")
 //        print("Width: \(self.window?.frame.width) Height: \(self.window?.frame.height)")
         carouselLayout.itemSize = .init(
-            width: self.frame.width - carouselMarginX,
-            height: self.frame.height - carouselMarginY
+            width: self.frame.width,// - carouselMarginX,
+            height: self.frame.height - carouselMarginY//100//collectionView.collectionViewLayout.collectionViewContentSize.height//400//
         )
         carouselLayout.sectionInset = .zero
         carouselLayout.minimumLineSpacing = 0
@@ -126,7 +126,7 @@ public class FanPowerView: UIView {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.reloadData()
-        collectionView.layer.cornerRadius = 24
+//        collectionView.layer.cornerRadius = 24
         //collectionView.roundCorners(topLeft: 24, topRight: 24, bottomLeft: 12, bottomRight: 12)
         updateScrollMeta()
         
@@ -327,8 +327,22 @@ public class FanPowerView: UIView {
     }
 }
 
+extension FanPowerView: UICollectionViewDelegateFlowLayout {
+//    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        if let cell = self.collectionView.cellForItem(at: indexPath) as? CarouselCell {
+//            return CGSize(
+//                width: self.frame.width - carouselMarginX,
+//                height: cell.height()
+//            )
+//        } else {
+//            return CGSize(width: self.frame.width - carouselMarginX, height: 500)
+//        }
+//    }
+}
+
 extension FanPowerView: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets.zero
     }
     
@@ -396,7 +410,15 @@ extension FanPowerView: UICollectionViewDataSource {
             if cell.viewModel.pickRow == nil {
                 cell.viewModel.getFanPicks()
             }
+            
+            let constantValue = propsData.picks.count > 4
+                ? 0.0
+                : (4 - Double(propsData.picks.count)) * 40
+            print("constant value \(constantValue)")
+            cell.bottomMargin.constant = max(0, constantValue)
         }
+        
+        
         return cell
     }
 }

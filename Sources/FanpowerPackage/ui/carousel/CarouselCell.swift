@@ -15,6 +15,9 @@ protocol StopStartScrollDelegate {
 class CarouselCell: UICollectionViewCell {
     @IBOutlet weak var title: UILabel!
     
+    @IBOutlet weak var bottomMargin: NSLayoutConstraint!
+    @IBOutlet weak var innerContentView: UIView!
+    @IBOutlet weak var contentHeight: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var registrationHolder: UIView!
     
@@ -64,6 +67,10 @@ class CarouselCell: UICollectionViewCell {
         self.initSubviews()
         self.registerListeners()
         self.registerActions()
+    }
+    
+    public func titleHeight() -> Double {
+        return title.bounds.height
     }
     
     func registerActions() {
@@ -222,6 +229,8 @@ class CarouselCell: UICollectionViewCell {
     
     func initSubviews() {
         codeEntryField.isHidden = true
+        
+        innerContentView.layer.cornerRadius = 24
         
         tableView.register(UINib(nibName: rowCellId, bundle: Bundle.module), forCellReuseIdentifier: rowCellId)
         tableView.dataSource = self

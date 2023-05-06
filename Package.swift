@@ -23,7 +23,9 @@ let package = Package(
         .target(
             name: "FanpowerPackage",
             dependencies: ["RxSwift", "Alamofire", .product(name: "RxCocoa", package: "RxSwift")],
-            resources: [.process("Resources/Fonts")]),
+            resources: [.process("Resources"), .process("ui/ScrollableFanPowerView.xib"), .process("ui/FanPowerView.xib"), .process("ui/carousel/props row/PropsRowCell.xib"), .process("ui/carousel/CarouselCell.xib"), .process("Assets.xcassets")],
+            swiftSettings: [.define("SPM")]
+        ),
         .testTarget(
             name: "FanpowerPackageTests",
             dependencies: ["FanpowerPackage"]),

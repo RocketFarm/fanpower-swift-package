@@ -8,6 +8,12 @@
 	</array>
 	<key>item 0</key>
 	<string>Outfit-VariableFont_wght.ttf</string>
+	<key>item 1</key>
+	<string>Stainless-Black.otf</string>
+	<key>item 2</key>
+	<string>Stainless-Bold.otf</string>
+	<key>item 3</key>
+	<string>Stainless-Regular.otf</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

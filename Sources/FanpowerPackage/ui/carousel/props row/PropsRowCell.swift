@@ -27,6 +27,15 @@ class PropsRowCell: UITableViewCell {
         progressBarView.backgroundColor = Constants.progressYellow
         progressBarView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         progressBarView.clipsToBounds = true
+        
+        if FanpowerApi.shared.publisherId == "367" {
+            styleForNascar()
+        }
+    }
+    
+    private func styleForNascar() {
+        Constants.convertNascarLabel(label: mainLabel)
+        Constants.convertNascarLabel(label: subLabel)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

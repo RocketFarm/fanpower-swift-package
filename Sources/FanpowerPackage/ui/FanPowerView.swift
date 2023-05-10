@@ -109,11 +109,20 @@ public class FanPowerView: UIView {
         collectionView.collectionViewLayout = carouselLayout
     }
     
+    private func styleForNascar() {
+        Constants.convertNascarLabel(label: termsAndConditionsLabel)
+        Constants.convertNascarLabel(label: learnMoreLabel)
+    }
+    
     private func initSubviews() {
         let nib = UINib(nibName: "FanPowerView", bundle: Bundle.module)
         nib.instantiate(withOwner: self, options: nil)
         contentView.frame = bounds
         addSubview(contentView)
+        
+        if FanpowerApi.shared.publisherId == "367" {
+            styleForNascar()
+        }
         
         pageControl.numberOfPages = collectionView(collectionView, numberOfItemsInSection: 0)
         pageControl.currentPage = 0

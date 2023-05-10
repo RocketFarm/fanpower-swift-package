@@ -54,6 +54,30 @@ class Constants {
         return address
     }
     
+    static func convertNascarField(field: UITextField) {
+        if let font = field.font {
+            field.font = convertNascarFont(font: font)
+        } else {
+            print("Could not convert field font!")
+        }
+    }
+    
+    static func convertNascarLabel(label: UILabel) {
+        label.font = convertNascarFont(font: label.font)
+    }
+    
+    static func convertNascarFont(font: UIFont) -> UIFont {
+        if font.fontName == "Outfit-Regular" {
+            return UIFont(name: "Stainless-Regular", size: font.pointSize)!
+        } else if font.fontName == "Outfit-ExtraBold" {
+            return UIFont(name: "Stainless-Black", size: font.pointSize)!
+        } else if font.fontName == "Outfit-Bold" {
+            return UIFont(name: "Stainless-Bold", size: font.pointSize)!
+        }
+        print("Could not convert font \(font.fontName)")
+        return font
+    }
+    
     enum Network: String {
         case wifi = "en0"
         case cellular = "pdp_ip0"

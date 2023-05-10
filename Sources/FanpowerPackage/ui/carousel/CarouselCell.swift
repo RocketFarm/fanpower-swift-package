@@ -26,14 +26,14 @@ class CarouselCell: UICollectionViewCell {
             codeEntryField?.addDoneCancelToolbar(onDone: (target: self, action: #selector(doneButtonTappedForNumericTextField)))
         }
     }
-    @IBOutlet weak var innerRegistrationHeader: UILabel!
-    @IBOutlet weak var registrationTopMessage: UILabel!
     @IBOutlet weak var adImage: UIImageView!
     @IBOutlet weak var innerRegistrationHeaderHolder: UIView!
     @IBOutlet weak var innerRegistrationHolder: UIView!
     @IBOutlet weak var innerRegistrationBodyHolder: UIView!
-    @IBOutlet weak var twoMinuteWarningLabel: UILabel!
     @IBOutlet weak var phoneFlagImage: UIImageView!
+    @IBOutlet weak var innerRegistrationHeader: UILabel!
+    @IBOutlet weak var registrationTopMessage: UILabel!
+    @IBOutlet weak var twoMinuteWarningLabel: UILabel!
     @IBOutlet weak var countryCodeLabel: UILabel!
     @IBOutlet weak var registrationSendButton: UIImageView!
     @IBOutlet weak var phoneTextField: UITextField! {
@@ -227,8 +227,26 @@ class CarouselCell: UICollectionViewCell {
         self.phoneTextField.textColor = Constants.black
     }
     
+    private func styleForNascar() {
+        Constants.convertNascarLabel(label: title)
+        Constants.convertNascarField(field: codeEntryField)
+        
+        Constants.convertNascarLabel(label: innerRegistrationHeader)
+        Constants.convertNascarLabel(label: registrationTopMessage)
+        Constants.convertNascarLabel(label: twoMinuteWarningLabel)
+        Constants.convertNascarLabel(label: countryCodeLabel)
+        
+        Constants.convertNascarField(field: phoneTextField)
+        Constants.convertNascarField(field: emailTextField)
+        Constants.convertNascarLabel(label: registrationFooter)
+    }
+    
     func initSubviews() {
         codeEntryField.isHidden = true
+        
+        if FanpowerApi.shared.publisherId == "367" {
+            styleForNascar()
+        }
         
         innerContentView.layer.cornerRadius = 24
         

@@ -66,6 +66,8 @@ FanPower.logout()
 Most apps will add this to their existing logout flow.
 ### Adding the Outfit font
 After you've added the FanpowerPackage to your project, copy the font file from `Sources/FanpowerPackage/Resources/Fonts/Outfit-VariableFont_wght.ttf` into your project and add the font as described in https://developer.apple.com/documentation/uikit/text_display_and_fonts/adding_a_custom_font_to_your_app
+### Adding the Stainless font
+If your app uses the Stainless font, after you've added the FanpowerPackage to your project, copy the font files from `Sources/FanpowerPackage/Resources/Fonts/Stainless-Black.otf`, `Sources/FanpowerPackage/Resources/Fonts/Stainless-Bold.otf`, and `Sources/FanpowerPackage/Resources/Fonts/Stainless-Regular.otf` into your project and add the font as described in https://developer.apple.com/documentation/uikit/text_display_and_fonts/adding_a_custom_font_to_your_app
 
 ---
 

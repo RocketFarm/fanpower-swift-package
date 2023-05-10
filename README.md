@@ -11,7 +11,7 @@ Once you have your Swift package set up, adding the FanPower Swift Package as a 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/RocketFarm/fanpower-swift-package.git", .exact(version: "0.0.31"))
+    .package(url: "https://github.com/RocketFarm/fanpower-swift-package.git", .exact(version: "0.0.32"))
 ]
 ```
 ### [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html)
@@ -21,7 +21,7 @@ dependencies: [
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'YOUR_TARGET_NAME' do
-  pod 'FanPower', '0.0.31'
+  pod 'FanPower', '0.0.32'
 end
 ```
 Replace YOUR_TARGET_NAME and then, in the Podfile directory, type:

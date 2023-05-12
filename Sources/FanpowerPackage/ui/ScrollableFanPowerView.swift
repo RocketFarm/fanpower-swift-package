@@ -73,8 +73,14 @@ public class ScrollableFanPowerView: UIView {
     }
     
     private func initSubviews() {
-        let nib = UINib(nibName: "ScrollableFanPowerView", bundle: Bundle(path: Bundle(for: ScrollableFanPowerView.self).path(forResource: "FanPower", ofType: "bundle")!))
-        nib.instantiate(withOwner: self, options: nil)
+        let bundle = Bundle(for: ScrollableFanPowerView.self).path(forResource: "FanPower", ofType: "bundle")
+        if let bundle = bundle {
+            let nib = UINib(nibName: "ScrollableFanPowerView", bundle: Bundle(path: bundle))
+            nib.instantiate(withOwner: self, options: nil)
+        } else {
+            let nib = UINib(nibName: "ScrollableFanPowerView", bundle: Bundle.module)
+            nib.instantiate(withOwner: self, options: nil)
+        }
         
         addSubview(contentView)
     }

@@ -250,10 +250,29 @@ class CarouselCell: UICollectionViewCell {
         
         innerContentView.layer.cornerRadius = 24
         
-        tableView.register(
-            UINib(nibName: "PropsRowCell", bundle: Bundle(path: Bundle(for: PropsRowCell.self).path(forResource: "FanPower", ofType: "bundle")!)),
-            forCellReuseIdentifier: rowCellId
-        )
+        
+        let cBundle = Bundle(for: PropsRowCell.self).path(forResource: "FanPower", ofType: "bundle")
+        if let cBundle = cBundle {
+            let nib = UINib(nibName: "PropsRowCell", bundle: Bundle(path: cBundle))
+
+            tableView.register(
+                nib,
+                forCellReuseIdentifier: rowCellId
+            )
+        } else {
+            let nib = UINib(nibName: "PropsRowCell", bundle: Bundle.module)
+
+            tableView.register(
+                nib,
+                forCellReuseIdentifier: rowCellId
+            )
+        }
+        
+//        tableView.register(
+//            UINib(nibName: "PropsRowCell", bundle: Bundle(path: Bundle(for: PropsRowCell.self).path(forResource: "FanPower", ofType: "bundle")!)),
+//            forCellReuseIdentifier: rowCellId
+//        )
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.isScrollEnabled = true

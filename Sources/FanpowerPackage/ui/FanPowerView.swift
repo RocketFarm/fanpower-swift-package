@@ -116,12 +116,20 @@ public class FanPowerView: UIView {
     
     private func initSubviews() {
         
+            let bundle = Bundle(for: FanPowerView.self).path(forResource: "FanPower", ofType: "bundle")
+            if let bundle = bundle {
+                let nib = UINib(nibName: "FanPowerView", bundle: Bundle(path: bundle))
+                nib.instantiate(withOwner: self, options: nil)
+            } else {
+                let nib = UINib(nibName: "FanPowerView", bundle: Bundle.module)
+                nib.instantiate(withOwner: self, options: nil)
+            }
         
-        let nib = UINib(nibName: "FanPowerView", bundle: Bundle(path: Bundle(for: FanPowerView.self).path(forResource: "FanPower", ofType: "bundle")!))
+//        let nib = UINib(nibName: "FanPowerView", bundle: Bundle(path: Bundle(for: FanPowerView.self).path(forResource: "FanPower", ofType: "bundle")!))
         
 //        let nib = UINib(nibName: "FanPowerView", bundle: Bundle(for: FanPowerView.classForCoder()))
         
-        nib.instantiate(withOwner: self, options: nil)
+//        nib.instantiate(withOwner: self, options: nil)
         contentView.frame = bounds
         addSubview(contentView)
         
@@ -134,10 +142,28 @@ public class FanPowerView: UIView {
         pageControl.isUserInteractionEnabled = false
         pageControlHolder.layer.cornerRadius = pageControlHolder.frame.height / 2
         
-        collectionView.register(
+                    
+        let cBundle = Bundle(for: CarouselCell.self).path(forResource: "FanPower", ofType: "bundle")
+        if let cBundle = cBundle {
+            let nib = UINib(nibName: "CarouselCell", bundle: Bundle(path: cBundle))
+            
+            collectionView.register(
+                nib,
+                forCellWithReuseIdentifier: CarouselCell.cellId
+            )
+        } else {
+            let nib = UINib(nibName: "CarouselCell", bundle: Bundle.module)
+            
+            collectionView.register(
+                nib,
+                forCellWithReuseIdentifier: CarouselCell.cellId
+            )
+        }
+        
+        /*collectionView.register(
             UINib(nibName: "CarouselCell", bundle: Bundle(path: Bundle(for: CarouselCell.self).path(forResource: "FanPower", ofType: "bundle")!)),
             forCellWithReuseIdentifier: CarouselCell.cellId
-        )
+        )*/
         
         setCollectionViewLayout()
         collectionView.delegate = self

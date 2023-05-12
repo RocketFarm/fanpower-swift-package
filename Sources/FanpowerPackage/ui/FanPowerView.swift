@@ -134,7 +134,10 @@ public class FanPowerView: UIView {
         pageControl.isUserInteractionEnabled = false
         pageControlHolder.layer.cornerRadius = pageControlHolder.frame.height / 2
         
-        collectionView.register(UINib(nibName: CarouselCell.cellId, bundle: Bundle(for: FanPowerView.classForCoder())), forCellWithReuseIdentifier: CarouselCell.cellId)
+        collectionView.register(
+            UINib(nibName: "CarouselCell", bundle: Bundle(path: Bundle(for: CarouselCell.self).path(forResource: "FanPower", ofType: "bundle")!)),
+            forCellWithReuseIdentifier: CarouselCell.cellId
+        )
         
         setCollectionViewLayout()
         collectionView.delegate = self

@@ -10,7 +10,7 @@ import Foundation
 #if !SPM
 
 extension Bundle {
-    static var module: Bundle { Bundle(identifier: "com.rfs.fanpower")! }
+    static var module: Bundle { Bundle(for: self.classForCoder()) }
 }
 
 #endif

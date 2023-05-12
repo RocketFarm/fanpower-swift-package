@@ -115,7 +115,7 @@ public class FanPowerView: UIView {
     }
     
     private func initSubviews() {
-        let nib = UINib(nibName: "FanPowerView", bundle: Bundle.module)
+        let nib = UINib(nibName: "FanPowerView", bundle: Bundle(for: FanPowerView.classForCoder()))
         nib.instantiate(withOwner: self, options: nil)
         contentView.frame = bounds
         addSubview(contentView)
@@ -129,7 +129,7 @@ public class FanPowerView: UIView {
         pageControl.isUserInteractionEnabled = false
         pageControlHolder.layer.cornerRadius = pageControlHolder.frame.height / 2
         
-        collectionView.register(UINib(nibName: CarouselCell.cellId, bundle: Bundle.module), forCellWithReuseIdentifier: CarouselCell.cellId)
+        collectionView.register(UINib(nibName: CarouselCell.cellId, bundle: Bundle(for: FanPowerView.classForCoder())), forCellWithReuseIdentifier: CarouselCell.cellId)
         
         setCollectionViewLayout()
         collectionView.delegate = self

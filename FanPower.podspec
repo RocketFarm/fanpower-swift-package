@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "FanPower"
-  spec.version      = "0.0.37"
+  spec.version      = "0.0.38"
   spec.summary      = "A prop picker widget for FanPower customers."
 
   # This description is used to generate tags and improve search results.
@@ -78,7 +78,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/RocketFarm/fanpower-swift-package.git", :tag => "v0.0.37", :branch => "main" }
+  spec.source       = { :git => "https://github.com/RocketFarm/fanpower-swift-package.git", :tag => "v0.0.38", :branch => "main" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -108,6 +108,10 @@ Pod::Spec.new do |spec|
   # spec.resources = "Resources/*.png"
 
   # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"
+
+# spec.resources = ["FanPowerPackage/*.xib"]
+spec.resource_bundles = {'FanPower' => ['**/*.xib']}
+
 
 
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

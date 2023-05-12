@@ -117,7 +117,7 @@ public class FanPowerView: UIView {
     private func initSubviews() {
         
         
-        let nib = UINib(nibName: "FanPowerView", bundle: Bundle(path: Bundle(for: ScrollableFanPowerView.self).path(forResource: "FanPower", ofType: "bundle")!))
+        let nib = UINib(nibName: "FanPowerView", bundle: Bundle(path: Bundle(for: FanPowerView.self).path(forResource: "FanPower", ofType: "bundle")!))
         
 //        let nib = UINib(nibName: "FanPowerView", bundle: Bundle(for: FanPowerView.classForCoder()))
         

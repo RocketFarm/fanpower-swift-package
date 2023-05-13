@@ -111,7 +111,7 @@ Pod::Spec.new do |spec|
 
 # spec.resources = ["FanPowerPackage/*.xib"]'
 spec.resource_bundles = {'FanPower' => ['**/*.{xib,storyboard,xcassets}']}
-spec.resource = 'Pod/Resources/**/*.xib'
+spec.resource = '**/*.xib'
 
 
 

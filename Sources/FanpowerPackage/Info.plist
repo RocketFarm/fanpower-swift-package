@@ -34,7 +34,7 @@
 		</dict>
 	</dict>
 	<key>LSMinimumSystemVersion</key>
-	<string>13.3</string>
+	<string>12.1</string>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
 </dict>

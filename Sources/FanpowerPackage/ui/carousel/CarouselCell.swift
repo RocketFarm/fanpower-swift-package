@@ -251,7 +251,7 @@ class CarouselCell: UICollectionViewCell {
         innerContentView.layer.cornerRadius = 24
         
         
-        let cBundle = Bundle(for: PropsRowCell.self).path(forResource: "FanPower", ofType: "bundle")
+        let cBundle = Bundle(for: PropsRowCell.self).path(forResource: "FanpowerPackage", ofType: "bundle")
         if let cBundle = cBundle {
             let nib = UINib(nibName: "PropsRowCell", bundle: Bundle(path: cBundle))
 

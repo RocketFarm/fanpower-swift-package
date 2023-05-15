@@ -116,7 +116,7 @@ public class FanPowerView: UIView {
     
     private func initSubviews() {
         
-            let bundle = Bundle(for: FanPowerView.self).path(forResource: "FanPower", ofType: "bundle")
+            let bundle = Bundle(for: FanPowerView.self).path(forResource: "FanpowerPackage", ofType: "bundle")
             if let bundle = bundle {
                 let nib = UINib(nibName: "FanPowerView", bundle: Bundle(path: bundle))
                 nib.instantiate(withOwner: self, options: nil)
@@ -143,7 +143,7 @@ public class FanPowerView: UIView {
         pageControlHolder.layer.cornerRadius = pageControlHolder.frame.height / 2
         
                     
-        let cBundle = Bundle(for: CarouselCell.self).path(forResource: "FanPower", ofType: "bundle")
+        let cBundle = Bundle(for: CarouselCell.self).path(forResource: "FanpowerPackage", ofType: "bundle")
         if let cBundle = cBundle {
             let nib = UINib(nibName: "CarouselCell", bundle: Bundle(path: cBundle))
             

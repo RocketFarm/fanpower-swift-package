@@ -105,7 +105,8 @@ class ViewController: UIViewController {
                                         publisherToken: "your-publisherToken",
                                         publisherId: "your-publisherId",
                                         shareUrl: "your-shareUrl",
-                                        referenceFrame: self.webView.frame) { //Passing nil for this param will make the scrollview full-screen
+                                        referenceFrame: self.webView.frame, //Passing nil for this param will make the scrollview full-screen
+                                        propIds: ["00001", "00002"] ) {  //Optional parameter, replace with your list of prop IDs.  Can be a list of a single ID.
                     self.fanpowerView.isHidden = false
                     self.fanpowerView.setCollectionViewLayout() //This line allows the widget to update its UI layout after it has been moved
                 }

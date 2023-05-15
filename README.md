@@ -11,7 +11,7 @@ Once you have your Swift package set up, adding the FanPower Swift Package as a 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/RocketFarm/fanpower-swift-package.git", .exact(version: "0.0.32"))
+    .package(url: "https://github.com/RocketFarm/fanpower-swift-package.git", .exact(version: "0.0.45"))
 ]
 ```
 ### [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html)
@@ -21,7 +21,7 @@ dependencies: [
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'YOUR_TARGET_NAME' do
-  pod 'FanPower', '0.0.32'
+  pod 'FanpowerPackage', '0.0.45'
 end
 ```
 Replace YOUR_TARGET_NAME and then, in the Podfile directory, type:
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
             publisherToken: "your-publisherToken",
             publisherId: "your-publisherId",
             shareUrl: "your-shareUrl",
-            propIds: ["00001", "00002"] //replace with your list of prop IDs.  Can be a list of a single ID.
+            propIds: ["00001", "00002"] //Optional parameter, replace with your list of prop IDs.  Can be a list of a single ID.
         ) {
             //self.fanPowerView has completed initialization and is ready to be displayed
             self.fanPowerView.isHidden = false
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
     }
 }
 ```
-`tokenForJwtRequest`, `publisherToken`, and `publisherId` should be supplied to you by FanPower.  `shareUrl` is a URL that users will share when they use the widget's share feature.  It is also used to create the referral URL.
+`tokenForJwtRequest`, `publisherToken`, and `publisherId` should be supplied to you by FanPower.  `shareUrl` is a URL that users will share when they use the widget's share feature.  It is also used to create the referral URL.  If you do not use the `propIds` parameter, the widget will use all active props from your account.
 ### Clearing user session (logout)
 ```swift
 import FanpowerPackage
@@ -105,7 +105,8 @@ class ViewController: UIViewController {
                                         publisherToken: "your-publisherToken",
                                         publisherId: "your-publisherId",
                                         shareUrl: "your-shareUrl",
-                                        referenceFrame: self.webView.frame) { //Passing nil for this param will make the scrollview full-screen
+                                        referenceFrame: self.webView.frame, //Passing nil for this param will make the scrollview full-screen
+                                        propIds: ["00001", "00002"] ) {  //Optional parameter, replace with your list of prop IDs.  Can be a list of a single ID.
                     self.fanpowerView.isHidden = false
                     self.fanpowerView.setCollectionViewLayout() //This line allows the widget to update its UI layout after it has been moved
                 }

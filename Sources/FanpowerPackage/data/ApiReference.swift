@@ -16,6 +16,7 @@ protocol ApiReference {
     func getPropPosts(propId: String, completionHandler: @escaping (DataResponse<PropPostsResponse, AFError>) -> Void)
     func getAd(adZoneId: String, completionHandler: @escaping (DataResponse<[AdResponse], AFError>) -> Void)
     func postNumber(number: String?, email: String?, completionHandler: @escaping (AFDataResponse<String>) -> Void)
+    func postEmail(email: String, completionHandler: @escaping (AFDataResponse<String>) -> Void)
     func getIpLookup(ip: String, completionHandler: @escaping (DataResponse<IpResponse, AFError>) -> Void)
     func createFanPick(
         pickId: String,

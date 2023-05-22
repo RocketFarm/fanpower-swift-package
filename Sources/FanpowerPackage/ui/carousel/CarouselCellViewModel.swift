@@ -198,20 +198,21 @@ class CarouselCellViewModel {
     func send(number: String?, email: String?) {
         submittedNumber = number
         submittedEmail = email
-        FanpowerApi.shared.postNumber(number: number, email: email) { result in
-            if result.value?.contains("Invalid") == true {
-                print("invalid phone or email error")
-                self.invalidPhoneOrEmailEntry.onNext(Void())
-                self.waitingForCode = false
-            } else if result.value?.contains("pending") == true {
-//                if email != nil {
-//                    //skip code
-//                    self.sendCode(code: "email")
-//                } else {
+        if let submittedEmail = submittedEmail {
+            FanpowerApi.shared.postEmail(email: submittedEmail) { result in
+                self.sendCode(code: "validated")
+            }
+        } else {
+            FanpowerApi.shared.postNumber(number: number, email: email) { result in
+                if result.value?.contains("Invalid") == true {
+                    print("invalid phone or email error")
+                    self.invalidPhoneOrEmailEntry.onNext(Void())
+                    self.waitingForCode = false
+                } else if result.value?.contains("pending") == true {
                     print("Message sent scucessfully")
                     self.waitingForCode = true
                     self.entrySubmittedSuccessfully.onNext(Void())
-//                }
+                }
             }
         }
     }

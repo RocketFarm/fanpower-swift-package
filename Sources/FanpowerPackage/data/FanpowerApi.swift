@@ -9,6 +9,7 @@ import Foundation
 import Alamofire
 
 class FanpowerApi: ApiReference {
+    
     static var shared: FanpowerApi = FanpowerApi()
     
     var access: String?
@@ -109,6 +110,19 @@ class FanpowerApi: ApiReference {
             headers: HTTPHeaders.init(arrayLiteral: HTTPHeader.init(name: "Authorization", value: "Bearer \(jwt)"))
         )
             .responseString(completionHandler: {string in print("postNumber result \(string)")})
+            .responseString(completionHandler: completionHandler)
+    }
+    func postEmail(email: String, completionHandler: @escaping (Alamofire.AFDataResponse<String>) -> Void) {
+        let params = AuthRequest(email: email, phoneNumber: nil)
+        self.email = email
+        let requestUrl = "\(FanpowerApi.base)v1/fans/validate?token=\(publisherToken)"
+        AF.request(requestUrl,
+            method: .post,
+            parameters: params,
+            encoder: URLEncodedFormParameterEncoder.default,
+            headers: HTTPHeaders.init(arrayLiteral: HTTPHeader.init(name: "Authorization", value: "Bearer \(jwt)"))
+        )
+            .responseString(completionHandler: {string in print("postEmail result \(string)")})
             .responseString(completionHandler: completionHandler)
     }
     func getIpLookup(ip: String, completionHandler: @escaping (Alamofire.DataResponse<IpResponse, Alamofire.AFError>) -> Void) {

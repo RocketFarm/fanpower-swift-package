@@ -13,4 +13,10 @@ struct PublisherResponse: Decodable, Encodable, Equatable {
     let icon_color: String?
     let text_link_color: String?
     let background_color: String?
+    let settings: Settings?
+}
+
+struct Settings: Decodable, Encodable, Equatable {
+    let require_terms_checkbox: String?
+    let require_terms_content: String?
 }

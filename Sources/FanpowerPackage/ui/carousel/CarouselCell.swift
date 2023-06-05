@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import WebKit
 
 protocol StopStartScrollDelegate {
     func changeScrollState(canScroll: Bool)
@@ -15,6 +16,12 @@ protocol StopStartScrollDelegate {
 class CarouselCell: UICollectionViewCell {
     @IBOutlet weak var title: UILabel!
     
+    @IBOutlet weak var disabledSendButton: UIImageView!
+    @IBOutlet weak var termsWebViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var termsWebView: WKWebView!
+    @IBOutlet weak var termsContent: UILabel!
+    @IBOutlet weak var termsSwitch: UISwitch!
+    @IBOutlet weak var termsHolder: UIView!
     @IBOutlet weak var bottomMargin: NSLayoutConstraint!
     @IBOutlet weak var innerContentView: UIView!
     @IBOutlet weak var contentHeight: NSLayoutConstraint!
@@ -241,12 +248,24 @@ class CarouselCell: UICollectionViewCell {
         Constants.convertNascarLabel(label: registrationFooter)
     }
     
+    @objc func onSwitchValueChanged(_ theSwitch: UISwitch) {
+        if theSwitch.isOn {
+            registrationSendButton.isUserInteractionEnabled = true
+            registrationSendButton.isHidden = false
+        } else if viewModel.needsCheckbox {
+            registrationSendButton.isUserInteractionEnabled = false
+            registrationSendButton.isHidden = true
+        }
+    }
+    
     func initSubviews() {
         codeEntryField.isHidden = true
         
         if FanpowerApi.shared.publisherId == "367" {
             styleForNascar()
         }
+        
+        termsSwitch.addTarget(self, action: #selector(onSwitchValueChanged(_:)), for: .valueChanged)
         
         innerContentView.layer.cornerRadius = 24
         
@@ -429,6 +448,17 @@ extension CarouselCell: UITableViewDelegate {
             self.moreIndicatorBottom.isHidden = false
         } else {
             self.moreIndicatorBottom.isHidden = true
+        }
+    }
+}
+
+extension CarouselCell: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if let url = navigationAction.request.url {
+            decisionHandler(.cancel)
+            UIApplication.shared.open(url)
+        } else {
+            decisionHandler(.allow)
         }
     }
 }

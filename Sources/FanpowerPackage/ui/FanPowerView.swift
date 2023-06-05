@@ -44,6 +44,8 @@ public class FanPowerView: UIView {
     private let carouselMarginX = 15.0
     private let carouselMarginY = 200.0
     private var completionHandler: () -> Void = {}
+    private var termsContentReference: UILabel?
+    private var termsContentWebviewHeight: NSLayoutConstraint?
     
     /*
      // Only override draw() if you perform custom drawing.
@@ -335,6 +337,10 @@ public class FanPowerView: UIView {
             self.collectionView.reloadData()
         }).disposed(by: disposeBag)
         
+        viewModel.termsUpdated.subscribe(onNext: {_ in
+            self.collectionView.reloadData()
+        }).disposed(by: disposeBag)
+        
         viewModel.colorsUpdated.subscribe(onNext: { publisherResponse in
             if let publisherResponse = publisherResponse {
                 let primaryColor = publisherResponse.primary_color == nil
@@ -367,6 +373,59 @@ public class FanPowerView: UIView {
                 self.collectionView.reloadData()
             }
         }).disposed(by: disposeBag)
+    }
+    
+    @objc func handleTapOnLabel(_ recognizer: UITapGestureRecognizer) {
+        
+        guard let termsContentReference = termsContentReference, let text = termsContentReference.attributedText?.string, let checkBoxContents = viewModel.checkBoxContents else {
+            return
+        }
+        
+        var resultsUrlsArray: [String] = []
+        do {
+            let regex = try NSRegularExpression(pattern: "<a.+?href=\"([^\"]+)")
+            let results = regex.matches(in: checkBoxContents, range: NSRange(checkBoxContents.startIndex..., in: checkBoxContents))
+            resultsUrlsArray = results.compactMap {
+                Range($0.range, in: checkBoxContents).map { String(checkBoxContents[$0]) }
+            }
+            for link in resultsUrlsArray {
+                print(link[link.index(link.startIndex, offsetBy: 9)...])
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        var resultsLinksArray: [String] = []
+        do {
+            let regex = try NSRegularExpression(pattern: ">(.+)</a>")
+            let results = regex.matches(in: checkBoxContents, range: NSRange(checkBoxContents.startIndex..., in: checkBoxContents))
+            resultsLinksArray = results.compactMap {
+                Range($0.range, in: checkBoxContents).map { String(checkBoxContents[$0]) }
+            }
+            for link in resultsLinksArray {
+                print(link)
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        //TODO: enumerate every link
+        if let range = text.range(of: "Policy") {
+            if recognizer.didTapAttributedTextInLabel(label: termsContentReference, inRange: NSRange(range, in: text)) {
+                //TODO: go to site
+                print("hi")
+            }
+        }
+        /*guard let text = lblAgreeToTerms.attributedText?.string else {
+            return
+        }
+
+        if let range = text.range(of: NSLocalizedString("_onboarding_terms", comment: "terms")),
+            recognizer.didTapAttributedTextInLabel(label: lblAgreeToTerms, inRange: NSRange(range, in: text)) {
+            goToTermsAndConditions()
+        } else if let range = text.range(of: NSLocalizedString("_onboarding_privacy", comment: "privacy")),
+            recognizer.didTapAttributedTextInLabel(label: lblAgreeToTerms, inRange: NSRange(range, in: text)) {
+            goToPrivacyPolicy()
+        }*/
     }
 }
 
@@ -436,6 +495,39 @@ extension FanPowerView: UICollectionViewDataSource {
             cell.initialize()
         }
         cell.registrationHolder.isHidden = true
+        if var checkBoxContents = viewModel.checkBoxContents {
+            cell.viewModel.needsCheckbox = true
+            cell.registrationSendButton.isUserInteractionEnabled = false
+            cell.registrationSendButton.isHidden = true
+            let fixer = "<!DOCTYPE html><html><head><meta name='viewport' content='initial-scale=1, user-scalable=no, width=device-width' /><style>@font-face { font-family: 'Outfit'; src: url('Outfit-VariableFont_wght.ttf') format('truetype'); } body { font-size: 10px; font-family: 'Outfit'; }</style></head><body>"
+            checkBoxContents = fixer + checkBoxContents + "</body></html>"
+            cell.termsContent.set(html: checkBoxContents)
+            cell.termsContent.isUserInteractionEnabled = true
+            cell.termsContent.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnLabel(_:))))
+            cell.termsContent.translatesAutoresizingMaskIntoConstraints = true
+            cell.termsContent.sizeToFit()
+            self.termsContentReference = cell.termsContent
+            self.termsContentWebviewHeight = cell.termsWebViewHeight
+            
+            let bundle = Bundle(for: FanPowerView.self).path(forResource: "FanpowerPackage", ofType: "bundle")
+            if let bundle = bundle {
+                cell.termsWebView.loadHTMLString(checkBoxContents, baseURL: Bundle(path: bundle)?.bundleURL)
+                
+            } else {
+                cell.termsWebView.loadHTMLString(checkBoxContents, baseURL: Bundle.module.bundleURL)
+                
+            }
+            cell.termsWebView.navigationDelegate = self
+            cell.termsWebView.scrollView.isScrollEnabled = false
+            cell.termsWebView.backgroundColor = .clear
+            cell.termsWebView.isOpaque = false
+            cell.termsWebView.scrollView.backgroundColor = .clear
+            cell.termsContent.isHidden = true
+            
+            cell.termsHolder.isHidden = false
+        } else {
+            cell.termsHolder.isHidden = true
+        }
         cell.viewModel.primaryColor = viewModel.primaryColor
         cell.viewModel.secondaryColor = viewModel.secondaryColor
         cell.viewModel.textLinkColor = viewModel.textLinkColor
@@ -473,6 +565,26 @@ extension FanPowerView: StopStartScrollDelegate {
             pageControl.isEnabled = false
         } else {
             updateScrollMeta()
+        }
+    }
+}
+
+
+extension FanPowerView: WKNavigationDelegate {
+    public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        
+        if let url = navigationAction.request.url { UIApplication.shared.open(url) }
+        decisionHandler(.allow)
+    }
+    
+    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        webView.evaluateJavaScript("document.readyState") { complete, error in
+            if complete != nil {
+                webView.evaluateJavaScript("document.body.scrollHeight") { height, error in
+                    print("height to \(height)")
+                    //self.termsContentWebviewHeight?.constant = (height as! CGFloat) * 4
+                }
+            }
         }
     }
 }

@@ -15,11 +15,13 @@ class FanPowerViewModel {
     var adUrlUpdated = PublishSubject<Void>()
     var propUpdated = PublishSubject<String>()
     var colorsUpdated = PublishSubject<PublisherResponse?>()
+    var termsUpdated = PublishSubject<Void>()
     var adUrl: String? = nil
     var adLink: String? = nil
     var primaryColor: UIColor? = nil
     var secondaryColor: UIColor? = nil
     var textLinkColor: UIColor? = nil
+    var checkBoxContents: String? = nil
     
     var propIds: [String] = []
     var propsData: [String: PropResponse] = [:]
@@ -114,8 +116,15 @@ class FanPowerViewModel {
     func getPublisher() {
         FanpowerApi.shared.getPublisher() { response in
             self.logoUrl.onNext(response.value?.picker_logo_url ?? "")
-            
+                        
             self.colorsUpdated.onNext(response.value)
+            
+            if let doCheckbox = response.value?.settings?.require_terms_checkbox,
+                doCheckbox.caseInsensitiveCompare("true") == .orderedSame {
+                
+                self.checkBoxContents = response.value?.settings?.require_terms_content?.replacingOccurrences(of: "'", with: "\"")
+                self.termsUpdated.onNext(Void())
+            }
         }
     }
 }

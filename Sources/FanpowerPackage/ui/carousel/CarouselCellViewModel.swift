@@ -31,6 +31,7 @@ class CarouselCellViewModel {
     var primaryColor: UIColor? = nil
     var secondaryColor: UIColor? = nil
     var textLinkColor: UIColor? = nil
+    var needsCheckbox = false
     
     enum Screen {
         case props

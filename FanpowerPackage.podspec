@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "FanpowerPackage"
-  spec.version      = "0.0.46"
+  spec.version      = "0.0.47"
   spec.summary      = "A prop picker widget for FanPower customers."
 
   # This description is used to generate tags and improve search results.

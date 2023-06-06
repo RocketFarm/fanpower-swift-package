@@ -16,11 +16,13 @@ protocol StopStartScrollDelegate {
 class CarouselCell: UICollectionViewCell {
     @IBOutlet weak var title: UILabel!
     
+    @IBOutlet weak var checkmarkCheckedImage: UIImageView!
+    @IBOutlet weak var checkmarkImage: UIImageView!
     @IBOutlet weak var disabledSendButton: UIImageView!
     @IBOutlet weak var termsWebViewHeight: NSLayoutConstraint!
     @IBOutlet weak var termsWebView: WKWebView!
     @IBOutlet weak var termsContent: UILabel!
-    @IBOutlet weak var termsSwitch: UISwitch!
+//    @IBOutlet weak var termsSwitch: UISwitch!
     @IBOutlet weak var termsHolder: UIView!
     @IBOutlet weak var bottomMargin: NSLayoutConstraint!
     @IBOutlet weak var innerContentView: UIView!
@@ -248,13 +250,17 @@ class CarouselCell: UICollectionViewCell {
         Constants.convertNascarLabel(label: registrationFooter)
     }
     
-    @objc func onSwitchValueChanged(_ theSwitch: UISwitch) {
-        if theSwitch.isOn {
-            registrationSendButton.isUserInteractionEnabled = true
-            registrationSendButton.isHidden = false
-        } else if viewModel.needsCheckbox {
+    @objc func checkmarkTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        if viewModel.checkboxIsChecked {
+            viewModel.checkboxIsChecked = false
+            checkmarkCheckedImage.alpha = 0
             registrationSendButton.isUserInteractionEnabled = false
             registrationSendButton.isHidden = true
+        } else {
+            viewModel.checkboxIsChecked = true
+            checkmarkCheckedImage.alpha = 1
+            registrationSendButton.isUserInteractionEnabled = true
+            registrationSendButton.isHidden = false
         }
     }
     
@@ -265,7 +271,13 @@ class CarouselCell: UICollectionViewCell {
             styleForNascar()
         }
         
-        termsSwitch.addTarget(self, action: #selector(onSwitchValueChanged(_:)), for: .valueChanged)
+        checkmarkCheckedImage.isUserInteractionEnabled = true
+        checkmarkCheckedImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(checkmarkTapped(tapGestureRecognizer:))))
+        checkmarkImage.isUserInteractionEnabled = true
+        checkmarkImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(checkmarkTapped(tapGestureRecognizer:))))
+//        checkmarkImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(checkmarkTapped(tapGestureRecognizer:))))
+//        checkmarkImage.addTarget(self, action: #selector(checkmarkTapped(_:)), for: .touchDown)
+//        checkmarkCheckedImage.addTarget(self, action: #selector(checkmarkTapped(_:)), for: .touchDown)
         
         innerContentView.layer.cornerRadius = 24
         

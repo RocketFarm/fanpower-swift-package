@@ -499,7 +499,7 @@ extension FanPowerView: UICollectionViewDataSource {
             cell.viewModel.needsCheckbox = true
             cell.registrationSendButton.isUserInteractionEnabled = false
             cell.registrationSendButton.isHidden = true
-            let fixer = "<!DOCTYPE html><html><head><meta name='viewport' content='initial-scale=1, user-scalable=no, width=device-width' /><style>@font-face { font-family: 'Outfit'; src: url('Outfit-VariableFont_wght.ttf') format('truetype'); } body { font-size: 10px; font-family: 'Outfit'; }</style></head><body>"
+            let fixer = "<!DOCTYPE html>\n<html><head><meta name='viewport' content='initial-scale=1, user-scalable=no, width=device-width' /><style>@font-face { font-family: 'Outfit'; src: url('Stainless-Regular.otf') format('opentype'); } body { font-size: 10px; font-family: 'Outfit', sans-serif; }</style></head><body>"
             checkBoxContents = fixer + checkBoxContents + "</body></html>"
             cell.termsContent.set(html: checkBoxContents)
             cell.termsContent.isUserInteractionEnabled = true

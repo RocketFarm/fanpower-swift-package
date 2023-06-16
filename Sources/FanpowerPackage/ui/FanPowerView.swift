@@ -17,6 +17,7 @@ public class FanPowerView: UIView {
     
     @IBOutlet public var contentView: UIView!
     
+    @IBOutlet private weak var learnMoreAndShareHolder: UIView!
     @IBOutlet private weak var learnMoreLabel: UILabel!
     @IBOutlet private weak var termsAndConditionsLabel: UILabel!
     @IBOutlet private weak var closeWebviewButton: UIImageView!
@@ -65,23 +66,25 @@ public class FanPowerView: UIView {
 //        initSubviews()
 //    }
     
-    public func setup(tokenForJwtRequest: String, publisherToken: String, publisherId: String, shareUrl: String, completionHandler: @escaping () -> Void) {
+    public func setup(tokenForJwtRequest: String, publisherToken: String, publisherId: String, shareUrl: String, allowPhoneRegistration: Bool = true, completionHandler: @escaping () -> Void) {
         FanpowerApi.shared.tokenForJwtRequest = tokenForJwtRequest
         FanpowerApi.shared.publisherToken = publisherToken
         FanpowerApi.shared.publisherId = publisherId
         FanpowerApi.shared.publisherShareUrl = shareUrl
         self.completionHandler = completionHandler
+        self.viewModel.allowPhoneRegistration = allowPhoneRegistration
         
         initSubviews()
     }
     
-    public func setup(tokenForJwtRequest: String, publisherToken: String, publisherId: String, shareUrl: String, propIds: [String], completionHandler: @escaping () -> Void) {
+    public func setup(tokenForJwtRequest: String, publisherToken: String, publisherId: String, shareUrl: String, allowPhoneRegistration: Bool = true, propIds: [String], completionHandler: @escaping () -> Void) {
         FanpowerApi.shared.tokenForJwtRequest = tokenForJwtRequest
         FanpowerApi.shared.publisherToken = publisherToken
         FanpowerApi.shared.publisherId = publisherId
         FanpowerApi.shared.publisherShareUrl = shareUrl
         self.completionHandler = completionHandler
         self.viewModel.propIds = propIds
+        self.viewModel.allowPhoneRegistration = allowPhoneRegistration
         
         initSubviews()
     }
@@ -526,8 +529,21 @@ extension FanPowerView: UICollectionViewDataSource {
             cell.termsContent.isHidden = true
             
             cell.termsHolder.isHidden = false
+            
+            //also hide buttons at bottom of main screen
+            termsAndConditionsHolder.isHidden = true
+            learnMoreAndShareHolder.isHidden = true
         } else {
             cell.termsHolder.isHidden = true
+            
+            termsAndConditionsHolder.isHidden = false
+            learnMoreAndShareHolder.isHidden = false
+        }
+        if !viewModel.allowPhoneRegistration {
+            cell.switchToEmail()
+            cell.registrationFooter.isHidden = true
+        } else {
+            cell.registrationFooter.isHidden = false
         }
         cell.viewModel.primaryColor = viewModel.primaryColor
         cell.viewModel.secondaryColor = viewModel.secondaryColor

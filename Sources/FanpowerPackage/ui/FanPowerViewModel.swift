@@ -22,6 +22,7 @@ class FanPowerViewModel {
     var secondaryColor: UIColor? = nil
     var textLinkColor: UIColor? = nil
     var checkBoxContents: String? = nil
+    var allowPhoneRegistration = true
     
     var propIds: [String] = []
     var propsData: [String: PropResponse] = [:]
@@ -122,7 +123,10 @@ class FanPowerViewModel {
             if let doCheckbox = response.value?.settings?.require_terms_checkbox,
                 doCheckbox.caseInsensitiveCompare("true") == .orderedSame {
                 
-                self.checkBoxContents = response.value?.settings?.require_terms_content?.replacingOccurrences(of: "'", with: "\"")
+//                self.checkBoxContents = response.value?.settings?.require_terms_content?.replacingOccurrences(of: "'", with: "\"")
+                if let contents = response.value?.settings?.require_terms_content {
+                    self.checkBoxContents = "Yes, I have read and agree to NASCAR’s <a href=\"https://www.nascar.com/privacy-statement\" target=\"_blank\">Privacy Policy</a> and <a href=\"https://www.nascar.com/terms-of-use/\" target=\"_blank\">Terms of Use</a>. I agree to receive communications from NASCAR on the latest news, events and promotions. You may opt out any time."
+                }
                 self.termsUpdated.onNext(Void())
             }
         }

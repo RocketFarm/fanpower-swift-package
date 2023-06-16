@@ -15,7 +15,7 @@ public class ScrollableFanPowerView: UIView {
     @IBOutlet var contentView: FPScrollView!
     @IBOutlet weak var fanPowerView: FanPowerView!
     
-    public func setup(heightConstant: CGFloat, topMarginConstant: CGFloat, bottomMarginConstant: CGFloat, tokenForJwtRequest: String, publisherToken: String, publisherId: String, shareUrl: String, referenceFrame: CGRect?, completionHandler: @escaping () -> Void) {
+    public func setup(heightConstant: CGFloat, topMarginConstant: CGFloat, bottomMarginConstant: CGFloat, tokenForJwtRequest: String, publisherToken: String, publisherId: String, shareUrl: String, allowPhoneRegistration: Bool = true, referenceFrame: CGRect?, completionHandler: @escaping () -> Void) {
         initSubviews()
         
         viewHeight.constant = heightConstant
@@ -27,6 +27,7 @@ public class ScrollableFanPowerView: UIView {
                                     publisherToken: publisherToken,
                                     publisherId: publisherId,
                                     shareUrl: shareUrl,
+                                    allowPhoneRegistration: allowPhoneRegistration,
                                     completionHandler: completionHandler)
         }
         
@@ -37,7 +38,7 @@ public class ScrollableFanPowerView: UIView {
         }
     }
     
-    public func setup(heightConstant: CGFloat, topMarginConstant: CGFloat, bottomMarginConstant: CGFloat, tokenForJwtRequest: String, publisherToken: String, publisherId: String, shareUrl: String, referenceFrame: CGRect?, propIds: [String], completionHandler: @escaping () -> Void) {
+    public func setup(heightConstant: CGFloat, topMarginConstant: CGFloat, bottomMarginConstant: CGFloat, tokenForJwtRequest: String, publisherToken: String, publisherId: String, shareUrl: String, referenceFrame: CGRect?, allowPhoneRegistration: Bool = true, propIds: [String], completionHandler: @escaping () -> Void) {
         initSubviews()
         
         viewHeight.constant = heightConstant
@@ -49,6 +50,7 @@ public class ScrollableFanPowerView: UIView {
                                     publisherToken: publisherToken,
                                     publisherId: publisherId,
                                     shareUrl: shareUrl,
+                                    allowPhoneRegistration: allowPhoneRegistration,
                                     propIds: propIds,
                                     completionHandler: completionHandler)
         }

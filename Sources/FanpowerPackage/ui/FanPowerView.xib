@@ -21,6 +21,7 @@
                 <outlet property="collectionView" destination="ECV-wa-Bal" id="vrO-8j-7dg"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="9NB-Zd-pko"/>
                 <outlet property="introHolder" destination="o3N-vR-Rno" id="3DO-b4-yai"/>
+                <outlet property="learnMoreAndShareHolder" destination="T3C-D0-QoQ" id="fVP-2e-Q3s"/>
                 <outlet property="learnMoreLabel" destination="Par-qH-sSk" id="EFV-La-5jP"/>
                 <outlet property="mainLogo" destination="cPs-iR-Ljk" id="xGN-Si-7ny"/>
                 <outlet property="pageControl" destination="dyF-gJ-o7Q" id="UTb-lh-XDl"/>
@@ -68,11 +69,11 @@
                         <constraint firstItem="dyF-gJ-o7Q" firstAttribute="centerX" secondItem="fH1-5L-AwN" secondAttribute="centerX" id="vR9-1x-zN4"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pnd-6p-Bhc">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pnd-6p-Bhc">
                     <rect key="frame" x="32" y="654" width="167" height="20"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms &amp; Conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nf7-ha-aEP">
-                            <rect key="frame" x="31.333333333333336" y="3" width="104.66666666666666" height="14"/>
+                            <rect key="frame" x="32.666666666666664" y="2.3333333333333721" width="101.66666666666669" height="15.333333333333336"/>
                             <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="12"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -85,11 +86,11 @@
                         <constraint firstAttribute="height" constant="20" id="ui2-kd-Vd6"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T3C-D0-QoQ">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T3C-D0-QoQ">
                     <rect key="frame" x="215" y="654" width="167" height="20"/>
                     <subviews>
                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn More" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Par-qH-sSk">
-                            <rect key="frame" x="20.666666666666657" y="3" width="62" height="14"/>
+                            <rect key="frame" x="20.666666666666657" y="2.3333333333333721" width="62" height="15.333333333333336"/>
                             <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="12"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -147,7 +148,7 @@
                     <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ma5-gw-Y6Q">
-                            <rect key="frame" x="8" y="160" width="398" height="396"/>
+                            <rect key="frame" x="8" y="156" width="398" height="404"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close" translatesAutoresizingMaskIntoConstraints="NO" id="MIN-uO-b2h">
                                     <rect key="frame" x="350" y="24" width="24" height="24"/>
@@ -157,7 +158,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAa-Y2-ScH">
-                                    <rect key="frame" x="25" y="62" width="348" height="98"/>
+                                    <rect key="frame" x="25" y="62" width="348" height="106"/>
                                     <string key="text">Share Your Pick
 With The World!</string>
                                     <fontDescription key="fontDescription" name="Outfit-Bold" family="Outfit" pointSize="42"/>
@@ -165,7 +166,7 @@ With The World!</string>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BXI-Rh-m6p">
-                                    <rect key="frame" x="24" y="186" width="350" height="52"/>
+                                    <rect key="frame" x="24" y="194" width="350" height="52"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitter" translatesAutoresizingMaskIntoConstraints="NO" id="xwp-77-LSM">
                                             <rect key="frame" x="163" y="14" width="24" height="24"/>
@@ -184,7 +185,7 @@ With The World!</string>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DBs-1k-XVR">
-                                    <rect key="frame" x="24" y="253" width="350" height="52"/>
+                                    <rect key="frame" x="24" y="261" width="350" height="52"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fb" translatesAutoresizingMaskIntoConstraints="NO" id="DPh-ah-VBr">
                                             <rect key="frame" x="163" y="14" width="24" height="24"/>
@@ -203,7 +204,7 @@ With The World!</string>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0wf-cw-Hbu">
-                                    <rect key="frame" x="24" y="320" width="350" height="52"/>
+                                    <rect key="frame" x="24" y="328" width="350" height="52"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sms" translatesAutoresizingMaskIntoConstraints="NO" id="jek-VO-e9l">
                                             <rect key="frame" x="163" y="14" width="24" height="24"/>

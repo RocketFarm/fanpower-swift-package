@@ -50,7 +50,11 @@ class CarouselCell: UICollectionViewCell {
             phoneTextField?.addDoneCancelToolbar(onDone: (target: self, action: #selector(doneButtonTappedForNumericTextField)))
         }
     }
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField! {
+        didSet {
+            emailTextField?.addDoneCancelToolbar(onDone: (target: self, action: #selector(doneButtonTappedForNumericTextField)))
+        }
+    }
     @IBOutlet weak var moreIndicatorTop: UIView!
     @IBOutlet weak var moreIndicatorBottom: UIView!
     @IBOutlet weak var registrationFooter: UILabel!
@@ -70,6 +74,7 @@ class CarouselCell: UICollectionViewCell {
         print("Done");
         codeEntryField.resignFirstResponder()
         phoneTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
     }
     
     func initialize() {        
@@ -165,6 +170,13 @@ class CarouselCell: UICollectionViewCell {
         }
     }
     
+    func switchToEmail() {
+        emailTextField.isHidden = false
+        phoneTextField.isHidden = true
+        phoneFlagImage.isHidden = true
+        countryCodeLabel.isHidden = true
+    }
+    
     func registerListeners() {
         viewModel.showScreen.subscribe(onNext: { screen in
             if screen == .register {
@@ -174,8 +186,10 @@ class CarouselCell: UICollectionViewCell {
                     self.registrationHolder.alpha = 1
                 }
                 self.stopStartScrollDelegate?.changeScrollState(canScroll: false)
+                self.tableView.layer.opacity = 0.2
             } else if screen == .results {
                 self.stopStartScrollDelegate?.changeScrollState(canScroll: true)
+                self.tableView.layer.opacity = 1
                 self.timer?.invalidate()
                 UIView.animate(withDuration: 0.5) {
                     self.registrationHolder.alpha = 0
@@ -271,6 +285,8 @@ class CarouselCell: UICollectionViewCell {
             styleForNascar()
         }
         
+        emailTextField.delegate = self
+        
         checkmarkCheckedImage.isUserInteractionEnabled = true
         checkmarkCheckedImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(checkmarkTapped(tapGestureRecognizer:))))
         checkmarkImage.isUserInteractionEnabled = true
@@ -318,6 +334,7 @@ class CarouselCell: UICollectionViewCell {
         moreIndicatorTop.layer.cornerRadius = 6
         moreIndicatorTop.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         moreIndicatorTop.clipsToBounds = true
+        moreIndicatorTop.layer.opacity = 0.2
         let gradientBottom = CAGradientLayer()
         gradientBottom.frame = moreIndicatorBottom.bounds
         gradientBottom.colors = [UIColor.clear.cgColor, UIColor.lightGray.cgColor]
@@ -327,6 +344,7 @@ class CarouselCell: UICollectionViewCell {
         moreIndicatorBottom.layer.cornerRadius = 6
         moreIndicatorBottom.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         moreIndicatorBottom.clipsToBounds = true
+        moreIndicatorBottom.layer.opacity = 0.2
         
         innerRegistrationHeaderHolder.backgroundColor = Constants.headerBgColor
         innerRegistrationHeaderHolder.clipsToBounds = true
@@ -472,5 +490,12 @@ extension CarouselCell: WKNavigationDelegate {
         } else {
             decisionHandler(.allow)
         }
+    }
+}
+
+extension CarouselCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

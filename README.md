@@ -73,7 +73,7 @@ If your app uses the Stainless font, after you've added the FanpowerPackage to y
 
 # Using the `ScrollableFanPowerView`
 ### Prerequisites
-Have a web view with a `ScrollableFanPowerView` placed on top of it.  The `ScrollableFanPowerView` should be constrained to the edges of the web view.
+Have a web view with a `ScrollableFanPowerView` placed on top of it.  The `ScrollableFanPowerView` should be constrained to the edges of the web view.  The `ScrollableFanPowerView` should have a clear color background.
 ### Example View Controller implementing a `ScrollableFanPowerView`
 ```swift
 import UIKit
@@ -89,7 +89,7 @@ class ViewController: UIViewController {
         
         webView.scrollView.delegate = self
         webView.navigationDelegate = self
-        webView.loadHTMLString("<div id=\"pu-prop-embed\" class=\\\"pu-prop-embed\\\" data-pickup-prop-id=\\\"25452\\\"><section><a href=\\\"https://playpickup.com/news/Array / surez-vs-chastain-who-wins-in-nashville - 25452\\\" rel=\\\"follow\\\" title=\\\"Suárez vs. Chastain: Who wins in Nashville? - Powered By PickUp\\\">Suárez vs. Chastain: Who wins in Nashville? - Powered By PickUp</a></section></div>", baseURL: nil)
+        webView.loadHTMLString("<html><head><meta name='viewport' content='initial-scale=1, user-scalable=no, width=device-width' /></head><body style=\"-webkit-text-size-adjust:none;color:black;\"><p>This weekend, NASCAR&#8217;s premier series returns to Nashville Superspeedway for just the second time.</p><p>The Cup Series heads back to the 1.33-mile concrete oval in Lebanon, Tennessee, for the Ally 400 on Sunday (5 p.m. ET, NBC/NBC Sports App, MRN, SiriusXM NASCAR Radio) after the series&#8217; off weekend.</p>   <div style=\"height:750px;\" id=\"pu-prop-embed\" class=\\\"pu-prop-embed\\\" data-pickup-prop-id=\\\"25452\\\"><section><a href=\\\"https://playpickup.com/news/Array / surez-vs-chastain-who-wins-in-nashville - 25452\\\" rel=\\\"follow\\\" title=\\\"Suárez vs. Chastain: Who wins in Nashville? - Powered By PickUp\\\">Suárez vs. Chastain: Who wins in Nashville? - Powered By PickUp</a></section></div>   <p>[Repeated content] This weekend, NASCAR&#8217;s premier series returns to Nashville Superspeedway for just the second time.</p><p>The Cup Series heads back to the 1.33-mile concrete oval in Lebanon, Tennessee, for the Ally 400 on Sunday (5 p.m. ET, NBC/NBC Sports App, MRN, SiriusXM NASCAR Radio) after the series&#8217; off weekend.</p></body></html>", baseURL: nil)
     }
     
     func positionOfElement(withId elementID: String) {

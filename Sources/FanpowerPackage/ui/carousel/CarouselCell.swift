@@ -16,10 +16,10 @@ protocol StopStartScrollDelegate {
 class CarouselCell: UICollectionViewCell {
     @IBOutlet weak var title: UILabel!
     
+    @IBOutlet weak var termsWebViewHeight: NSLayoutConstraint!
     @IBOutlet weak var checkmarkCheckedImage: UIImageView!
     @IBOutlet weak var checkmarkImage: UIImageView!
     @IBOutlet weak var disabledSendButton: UIImageView!
-    @IBOutlet weak var termsWebViewHeight: NSLayoutConstraint!
     @IBOutlet weak var termsWebView: WKWebView!
     @IBOutlet weak var termsContent: UILabel!
 //    @IBOutlet weak var termsSwitch: UISwitch!

@@ -598,8 +598,8 @@ extension FanPowerView: WKNavigationDelegate {
         webView.evaluateJavaScript("document.readyState") { complete, error in
             if complete != nil {
                 webView.evaluateJavaScript("document.body.scrollHeight") { height, error in
-                    print("height to \(height)")
-                    //self.termsContentWebviewHeight?.constant = (height as! CGFloat) * 4
+                    //print("height to \(height)")
+                    self.termsContentWebviewHeight?.constant = (height as! CGFloat) + 5
                 }
             }
         }

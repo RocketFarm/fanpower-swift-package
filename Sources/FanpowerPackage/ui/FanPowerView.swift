@@ -136,6 +136,10 @@ public class FanPowerView: UIView {
         
 //        nib.instantiate(withOwner: self, options: nil)
         contentView.frame = bounds
+        
+        if subviews.contains(contentView) {
+            contentView.removeFromSuperview()
+        }
         addSubview(contentView)
         
         if FanpowerApi.shared.publisherId == "367" {
